@@ -5,14 +5,18 @@ using UnityEngine;
 public class Player : BaseUnit{
 
     public float velocity;
+    
     Rigidbody2D physics;
-
+	Animator animator;
+	SpriteRenderer spriteRenderer;
     
     void Awake(){
         this.physics = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 	
-	void LateUpdate(){
+	void Lat2eUpdate(){
     	float positionY = transform.position.y;
     	if(positionY < 0) positionY = 0;
     	Camera.main.transform.position =  new Vector3(transform.position.x,positionY,-10f);
@@ -22,20 +26,24 @@ public class Player : BaseUnit{
 		float move = Input.GetAxis("Horizontal");
 
 		physics.velocity = new Vector2( move * velocity, physics.velocity.y);
+    	if(move > 0 && spriteRenderer.flipX == true || move < 0 && spriteRenderer.flipX == false) Flip();
     }
 
-    void Update2(){
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.physics.AddForce(Vector3.right * velocity);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-        //    this.physics.AddForce(Vector3.left * Velocity);
-        }
+    void PlayerAnimation(){
+
+    	animator.SetFloat("VelX",Mathf.Abs(physics.velocity.x)); //  <>
+    	animator.SetFloat("VelY",Mathf.Abs(physics.velocity.y)); // ^ 
+    }
+
+    void Flip(){
+    	spriteRenderer.flipX = !spriteRenderer.flipX;
+    }
+
+    void Update(){
         if (Input.GetKeyDown(KeyCode.W))
         {
             this.physics.AddForce(Vector3.up * velocity, ForceMode2D.Impulse);
         }
+        PlayerAnimation();
     }
 }
