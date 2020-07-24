@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Player : BaseUnit{
 
-    public float velocity;
-    
+    [SerializeField]
+    private float velocity;
+
+    [SerializeField]
+    private float salto;
+
+    private bool isInFloor;
+
     Rigidbody2D physics;
 	Animator animator;
 	SpriteRenderer spriteRenderer;
-    bool isInFloor;
+    
     void Awake(){
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         this.isInFloor = true;
+        this.salto = 1;
     }
 	
 	void Lat2eUpdate(){
@@ -41,15 +48,18 @@ public class Player : BaseUnit{
     }
 
     void Update(){
+        PlayerAnimation();
+
+        // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             if (this.isInFloor)
             {
-                this.physics.AddForce(Vector3.up * velocity, ForceMode2D.Impulse);
+                this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 this.isInFloor = false;
             }
         }
-        PlayerAnimation();
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
