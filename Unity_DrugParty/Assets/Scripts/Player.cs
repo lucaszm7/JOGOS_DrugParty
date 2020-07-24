@@ -22,7 +22,7 @@ public class Player : BaseUnit{
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         this.isInFloor = true;
-        this.salto = 1;
+        this.salto = 1.3f;
     }
 	
     // =========== Para que essa função serve ?? ===============//
@@ -64,7 +64,7 @@ public class Player : BaseUnit{
             {
                 this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 this.isInFloor = false;
-                Camera.main.transform.position = this.transform.position;
+                //Camera.main.transform.position = this.transform.position;
             }
         }
         
