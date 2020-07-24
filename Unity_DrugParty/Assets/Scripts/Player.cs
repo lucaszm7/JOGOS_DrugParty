@@ -9,11 +9,12 @@ public class Player : BaseUnit{
     Rigidbody2D physics;
 	Animator animator;
 	SpriteRenderer spriteRenderer;
-    
+    bool isInFloor;
     void Awake(){
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        this.isInFloor = true;
     }
 	
 	void Lat2eUpdate(){
@@ -40,10 +41,19 @@ public class Player : BaseUnit{
     }
 
     void Update(){
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            this.physics.AddForce(Vector3.up * velocity, ForceMode2D.Impulse);
+            if (this.isInFloor)
+            {
+                this.physics.AddForce(Vector3.up * velocity, ForceMode2D.Impulse);
+                this.isInFloor = false;
+            }
         }
         PlayerAnimation();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        this.isInFloor = true;
     }
 }
