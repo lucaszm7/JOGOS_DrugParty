@@ -10,6 +10,9 @@ public class Player : BaseUnit{
     [SerializeField]
     private float salto;
 
+    [SerializeField]
+    bool bebado;
+
     private bool isInFloor;
 
     Rigidbody2D physics;
@@ -23,15 +26,19 @@ public class Player : BaseUnit{
         animator = GetComponent<Animator>();
         this.isInFloor = true;
         this.salto = 1.3f;
+        this.bebado = true;
     }
-	
-    // =========== Para que essa função serve ?? ===============//
-    // ==========================================================
-	/*void Lat2eUpdate(){
-    	float positionY = transform.position.y;
-    	if(positionY < 0) positionY = 0;
-    	Camera.main.transform.position =  new Vector3(transform.position.x,positionY,-10f);
-    }*/
+
+    // Movimentação da Camera
+    void LateUpdate()
+    {
+        float positionY = transform.position.y;
+        if (positionY < 0) positionY = 0;
+        if (this.bebado)
+        {
+            Camera.main.transform.position = new Vector3(transform.position.x, positionY, -10f);
+        }
+    }
 
     // Movimentação Horizontal do Player (porque não está no Update?) (Vamos usar Force invés de mudar a Velocidade)
     void FixedUpdate(){
