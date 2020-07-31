@@ -6,17 +6,19 @@ public class playerTest : MonoBehaviour
 {
 
     [SerializeField]
-    private float velocity;
+    float velocity;
 
     [SerializeField]
-    private float salto;
+    float salto;
 
     [SerializeField]
     bool bebado;
 
-    private float movimento;
-    private string direcao;
-    private bool isInFloor;
+    float movimento;
+    string direcao;
+    bool isInFloor;
+    float previousPositionY;
+
 
     Rigidbody2D physics;
     Animator animator;
@@ -37,28 +39,31 @@ public class playerTest : MonoBehaviour
     void LateUpdate()
     {
         float positionY = transform.position.y;
+        float positionX = transform.position.x;
         if (positionY < 0) positionY = 0;
+        if (positionX < 0) positionX = 0;
+
 
         // CAMERA BEBADA
         if (this.bebado)
         {
-            Camera.main.transform.position = new Vector3(transform.position.x, positionY, -10f);
+            Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
         }
     }
 
-    void Update()
-    {
-        PlayerAnimation();
+    void Update(){
         Movimentacao();
+        PlayerAnimation();
     }
 
     void Movimentacao()
     {
+        if(physics.velocity.y > 0f){
+            previousPositionY = transform.position.y;    
+        }
         // Salto
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
-        {
-            if (this.isInFloor)
-            {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
+            if (this.isInFloor){
                 this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 this.isInFloor = false;
             }
@@ -66,7 +71,11 @@ public class playerTest : MonoBehaviour
 
         // MOVIMENTO HORIZONTAL
         movimento = Input.GetAxis("Horizontal");
-        if ((movimento > 0 || movimento < 0))
+        // Teste de Velocidade com o Metod antigo |
+         physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+        if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
+
+        if ((movimento > 0 || movimento < 0) && false)
         {
             if (movimento > 0)
             {
@@ -91,19 +100,17 @@ public class playerTest : MonoBehaviour
                 if (this.physics.velocity.x > -10f)
                 {
                     this.physics.AddForce(Vector2.left * velocity);
-                }
-                
+                }                
             }
-            if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
         }
     }
 
-    // Animação do Player, correr, pular, etc (???)
-    void PlayerAnimation()
-    {
+    // Animações do Player
+    void PlayerAnimation(){
 
         animator.SetFloat("VelX", Mathf.Abs(physics.velocity.x)); //  <>
         animator.SetFloat("VelY", Mathf.Abs(physics.velocity.y)); // ^ 
+        animator.SetBool("isJumping", !(physics.velocity.y < 0.1f && transform.position.y < previousPositionY)); 
     }
 
     //Faz a mudança de Sprite quando troca de direção (???)

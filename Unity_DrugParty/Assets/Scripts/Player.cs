@@ -48,21 +48,20 @@ public class Player : BaseUnit{
     	if(move > 0 && spriteRenderer.flipX == true || move < 0 && spriteRenderer.flipX == false) Flip();
     }
 
-    // Animação do Player, correr, pular, etc (???)
+    // Animação do Player
     void PlayerAnimation(){
 
     	animator.SetFloat("VelX",Mathf.Abs(physics.velocity.x)); //  <>
     	animator.SetFloat("VelY",Mathf.Abs(physics.velocity.y)); // ^ 
     }
 
-    //Faz a mudança de Sprite quando troca de direção (???)
+    //Gira a imagem para a direção
     void Flip(){
     	spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     void Update(){
 
-        PlayerAnimation();
 
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
@@ -74,6 +73,7 @@ public class Player : BaseUnit{
                 //Camera.main.transform.position = this.transform.position;
             }
         }
+        PlayerAnimation();
         
     }
 
