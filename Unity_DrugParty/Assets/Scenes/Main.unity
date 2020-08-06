@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 696729373}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e703331a52d8a48acb1b7088e0eb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bebida: {fileID: 0}
+  bebida: {fileID: 21300000, guid: 3c6737a062156934bb2fb255d3fb6f30, type: 3}
   MaxItem: 1
 --- !u!4 &696729374
 Transform:
