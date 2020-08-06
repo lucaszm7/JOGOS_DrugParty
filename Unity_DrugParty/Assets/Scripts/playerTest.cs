@@ -32,7 +32,7 @@ public class playerTest : MonoBehaviour
         animator = GetComponent<Animator>();
         this.isInFloor = true;
         this.salto = 1.3f;
-        this.bebado = true;
+        this.bebado = false;
     }
 
     // Movimentação da Camera
@@ -43,6 +43,8 @@ public class playerTest : MonoBehaviour
         if (positionY < 0) positionY = 0;
         if (positionX < 0) positionX = 0;
 
+        // CAMERA NORMAL
+        Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
 
         // CAMERA BEBADA
         if (this.bebado)
@@ -73,38 +75,10 @@ public class playerTest : MonoBehaviour
         // MOVIMENTO HORIZONTAL
         movimento = Input.GetAxis("Horizontal");
         // Teste de Velocidade com o Metod antigo |
-         physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+        physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
 
         if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
 
-        if ((movimento > 0 || movimento < 0) && false ) //&& false
-        {
-            if (movimento > 0)
-            {
-                if (direcao == "left")
-                {
-                    this.physics.velocity = Vector2.zero;
-                }
-                direcao = "right";
-                if (this.physics.velocity.x < 10f)
-                {
-                    this.physics.AddForce(Vector2.right * velocity);
-                }
-                
-            }
-            else
-            {
-                if (direcao == "right")
-                {
-                    this.physics.velocity = Vector2.zero;
-                }
-                direcao = "left";
-                if (this.physics.velocity.x > -10f)
-                {
-                    this.physics.AddForce(Vector2.left * velocity);
-                }                
-            }
-        }
     }
 
     // Animações do Player
