@@ -40,8 +40,8 @@ public class playerTest : MonoBehaviour
     {
         float positionY = transform.position.y;
         float positionX = transform.position.x;
-        //if (positionY < 0) positionY = 0;
-        //if (positionX < 0) positionX = 0;
+        if (positionY < 0) positionY = 0;
+        if (positionX < 0) positionX = 0;
 
 
         // CAMERA BEBADA
@@ -58,9 +58,9 @@ public class playerTest : MonoBehaviour
 
     void Movimentacao()
     {
-        /*if(physics.velocity.y > 0f){
+        if(physics.velocity.y > 0f){
             previousPositionY = transform.position.y;    
-        }*/
+        }
 
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
