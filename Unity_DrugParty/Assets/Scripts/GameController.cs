@@ -34,14 +34,19 @@ public class GameController : MonoBehaviour{
     }
 
     public void addItem(){
-    	float x = -8f,y = 4.74f;
-    	x += ++CountItem;
+    	float x = -3f,y = -1.18f;
+    	//x += ++CountItem;
 
     	GameObject newItem = new GameObject("Item X:"+x+" Y:"+y);
-        newItem.transform.Translate(x,y, 0);
-        newItem.transform.parent = transform;
-        newItem.transform.localScale = new Vector3(2,2,2);
+        newItem.transform.localPosition = new Vector3(x,y, 0);
+        newItem.transform.parent = Camera.main.transform;
+       // newItem.transform.localScale = new Vector3(2,2,2);
         SpriteRenderer spriteRenderer = newItem.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = bebida;
+        Debug.Log(newItem.transform.localPosition);
+    }
+
+    public static void Finish(){
+        Debug.Log("Acabou");
     }
 }

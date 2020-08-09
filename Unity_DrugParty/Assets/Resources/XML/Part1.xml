@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cutscenes>
+	<cutscene>
+		<id>1</id>
+		<text>Proin lobortis ex sed rutrum ultrices. Proin vel mi ut sem consectetur rutrum at at ex. Ut id ipsum sit amet eros tempus consectetur eu ut eros. Suspendisse ut pretium risus.</text>
+		<sprite>Wood Storage</sprite>
+	</cutscene>
+</cutscenes>	

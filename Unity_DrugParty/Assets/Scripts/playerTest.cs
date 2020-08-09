@@ -96,9 +96,16 @@ public class playerTest : MonoBehaviour
     }
 
     // Quando no Chão, ele pode pular
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        this.isInFloor = true;
+    void OnCollisionEnter2D(Collision2D collision){
+        switch(collision.gameObject.tag){
+            case "Finish":
+                collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+                GameController.Finish();
+            break;
+            case "Floor":
+                isInFloor = true;
+            break;
+        }
     }
 }
 
