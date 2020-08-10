@@ -2,84 +2,110 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : BaseUnit{
+public class Player : MonoBehaviour
+{
 
     [SerializeField]
-    private float velocity;
+    float velocity;
 
     [SerializeField]
-    private float salto;
+    float salto;
 
     [SerializeField]
     bool bebado;
 
-    private bool isInFloor;
+    float movimento;
+    bool isInFloor;
+    float previousPositionY;
+
 
     Rigidbody2D physics;
-	Animator animator;
-	SpriteRenderer spriteRenderer;
-    
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+
     // Pega os componentes necessários quando o Player eh criado
-    void Awake(){
+    void Awake()
+    {
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        this.velocity = 5;
         this.isInFloor = true;
         this.salto = 1.3f;
-        this.bebado = true;
+        this.bebado = false;
     }
 
     // Movimentação da Camera
     void LateUpdate()
     {
         float positionY = transform.position.y;
+        float positionX = transform.position.x;
         if (positionY < 0) positionY = 0;
+        if (positionX < 0) positionX = 0;
+
+        // CAMERA NORMAL
+        Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
+
+        // CAMERA BEBADA
         if (this.bebado)
         {
-            Camera.main.transform.position = new Vector3(transform.position.x, positionY, -10f);
+            Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
         }
-    }
-
-    // Movimentação Horizontal do Player (porque não está no Update?) (Vamos usar Force invés de mudar a Velocidade)
-    void FixedUpdate(){
-		float move = Input.GetAxis("Horizontal");
-
-		physics.velocity = new Vector2( move * velocity, physics.velocity.y);
-    	if(move > 0 && spriteRenderer.flipX == true || move < 0 && spriteRenderer.flipX == false) Flip();
-    }
-
-    // Animação do Player
-    void PlayerAnimation(){
-
-    	animator.SetFloat("VelX",Mathf.Abs(physics.velocity.x)); //  <>
-    	animator.SetFloat("VelY",Mathf.Abs(physics.velocity.y)); // ^ 
-    }
-
-    //Gira a imagem para a direção
-    void Flip(){
-    	spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     void Update(){
+        Movimentacao();
+        PlayerAnimation();
+    }
 
+    void Movimentacao()
+    {
+        if(physics.velocity.y > 0f){
+            previousPositionY = transform.position.y;    
+        }
 
         // Salto
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
-        {
-            if (this.isInFloor)
-            {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
+            if (this.isInFloor){
                 this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 this.isInFloor = false;
-                //Camera.main.transform.position = this.transform.position;
             }
         }
-        PlayerAnimation();
-        
+
+        // MOVIMENTO HORIZONTAL
+        movimento = Input.GetAxis("Horizontal");
+        // Teste de Velocidade com o Metod antigo |
+        physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+
+        if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
+
+    }
+
+    // Animações do Player
+    void PlayerAnimation(){
+
+        animator.SetFloat("VelX", Mathf.Abs(physics.velocity.x)); //  <>
+        animator.SetFloat("VelY", Mathf.Abs(physics.velocity.y)); // ^ 
+        animator.SetBool("isJumping", !(physics.velocity.y < 0.1f && transform.position.y < previousPositionY)); 
+    }
+
+    //Faz a mudança de Sprite quando troca de direção
+    void Flip()
+    {
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     // Quando no Chão, ele pode pular
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        this.isInFloor = true;
+    void OnCollisionEnter2D(Collision2D collision){
+        switch(collision.gameObject.tag){
+            case "Finish":
+                collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+                GameController.Finish();
+            break;
+            case "Floor":
+                isInFloor = true;
+            break;
+        }
     }
 }
+
