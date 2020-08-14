@@ -2,7 +2,20 @@
 <cutscenes>
 	<cutscene>
 		<id>1</id>
-		<text>Proin lobortis ex sed rutrum ultrices. Proin vel mi ut sem consectetur rutrum at at ex. Ut id ipsum sit amet eros tempus consectetur eu ut eros. Suspendisse ut pretium risus.</text>
-		<sprite>Wood Storage</sprite>
+		<type>Legend</type>
+		<title>Casa do Lucas</title>
+		<text></text>
+	</cutscene>
+	<cutscene>
+		<id>2</id>
+		<type>Dialog</type>
+		<title>Amigo 1</title>
+		<text>E Aí, dezoitão, bora aproveitar e ir numa festa com o pessoal, você vai se amarrar.</text>
+	</cutscene>
+	<cutscene>
+		<id>3</id>
+		<type>Dialog</type>
+		<title>Amigo 2</title>
+		<text>É, vai ser muito louco, vamos virar a noite hoje, quem sabe você não pega alguém?</text>
 	</cutscene>
 </cutscenes>	

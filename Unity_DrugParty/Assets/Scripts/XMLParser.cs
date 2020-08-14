@@ -19,7 +19,18 @@ public class XMLParser {
 			if(current != null){
 				if(reader.IsStartElement("id")) current.Id = reader.ReadElementContentAsInt();
 				if(reader.IsStartElement("text")) current.Text = reader.ReadElementContentAsString();
-				if(reader.IsStartElement("sprite")) current.Sprite = reader.ReadElementContentAsString();
+				if(reader.IsStartElement("type")) {
+					string type = reader.ReadElementContentAsString();
+					switch(type){
+						case "Dialog":
+							current.Type = CutscenesType.Dialog;
+						break;
+						case "Legend":
+							current.Type = CutscenesType.Legend;
+						break;
+					}
+				}
+				if(reader.IsStartElement("title")) current.Title = reader.ReadElementContentAsString();
 			}
 		}
 
