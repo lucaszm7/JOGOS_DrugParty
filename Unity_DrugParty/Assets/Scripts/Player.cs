@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     [SerializeField]
     float velocity;
-
     [SerializeField]
     float salto;
-
     [SerializeField]
     bool bebado;
+
+    //Vida decai com o uso de Drogas
+    int vida;
 
     float movimento;
     bool isInFloor;
