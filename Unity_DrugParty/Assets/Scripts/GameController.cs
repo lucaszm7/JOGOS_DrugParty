@@ -11,29 +11,25 @@ public class GameController : MonoBehaviour{
     public Sprite doce;
     public Sprite beck;
     public Sprite agua;
-
+    private bool isPaused = false;
     /*int tempo = 0;
     bool end = false;
-	GameObject[] listItem;
+    GameObject[] listItem;*/
+
+    
     void Update()
     {
-        StartCoroutine(ContarTempo());
-    }
-    void OnGUI()
-    {
-        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth - 30, 10, 30, 20));
-        GUILayout.Label("=== TEMPO ===" + tempo);
-        GUILayout.EndArea();
-
-    }
-    IEnumerator ContarTempo()
-    {
-        while (!end)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            tempo += 1;
-            yield return new WaitForSeconds(1);
+            isPaused = true;
         }
-    }*/
+        
+    }
+
+    public static void Finish()
+    {
+        Time.timeScale = 0;
+    }
 
     public void addItem(Item itemPass){
         if (Itens.Contains(itemPass.name) == true)
@@ -67,11 +63,49 @@ public class GameController : MonoBehaviour{
                 spriteRenderer.sprite = bebida;
                 break;
         }
-        //spriteRenderer.sprite = bebida;
         spriteRenderer.sortingOrder = 30;
     }
 
-    public static void Finish(){
-        Debug.Log("Acabou");
+    void OnGUI()
+    {
+        if (isPaused)
+            GUI.Label(new Rect(100, 100, 50, 30), "Game paused");
     }
+    void OnApplicationFocus(bool hasFocus)
+    {
+        isPaused = !hasFocus;
+        if (!isPaused)
+        {
+            Time.timeScale = 1;
+        }
+    }
+    public void OnApplicationPause(bool pauseStatus)
+    {
+        isPaused = pauseStatus;
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+        }
+    }
+
 }
+
+    /*void Update()
+    {
+        StartCoroutine(ContarTempo());
+    }
+    void OnGUI()
+    {
+        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth - 30, 10, 30, 20));
+        GUILayout.Label("=== TEMPO ===" + tempo);
+        GUILayout.EndArea();
+
+    }
+    IEnumerator ContarTempo()
+    {
+        while (!end)
+        {
+            tempo += 1;
+            yield return new WaitForSeconds(1);
+        }
+    }*/

@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class CutsceneController : MonoBehaviour {
 
 	public Texture2D RectangleTexture;
+
     [SerializeField]
     SpriteRenderer spriteRenderer;
+
 	CutsceneObject[] _listCustscene;
     CutsceneObject _currentScene;
 	int index = -1;
@@ -27,6 +29,7 @@ public class CutsceneController : MonoBehaviour {
 
     void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer.sortingOrder = 30;
     	TextAsset CutsceneInfo = Resources.Load<TextAsset>("XML/Part"+part);
         _listCustscene = XMLParser.ParserCutscene(CutsceneInfo.text);
         max = _listCustscene.Length;
@@ -35,7 +38,7 @@ public class CutsceneController : MonoBehaviour {
 
     void Update(){
     	//var sprite = Resources.Load<Sprite>("Sprites/sprite01");
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)){
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fire1")){
             if(IsComplete){
             	if(index >= max-1){
                     StartCoroutine(SceneSwitch());
@@ -45,12 +48,13 @@ public class CutsceneController : MonoBehaviour {
             }else{
                 StopAllCoroutines();
                 TextinLine = _currentScene.Text;
+                GameObject.Destroy(this);
             }
         }
     }
 
      IEnumerator SceneSwitch(){
-        SceneManager.LoadScene("Main", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
         yield return null;
         SceneManager.UnloadSceneAsync("Cutscene");
     }

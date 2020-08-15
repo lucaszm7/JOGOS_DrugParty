@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        this.velocity = 5;
+        this.velocity = 3;
         this.isInFloor = true;
         this.salto = 1.3f;
         this.bebado = false;
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         switch(collision.gameObject.tag){
             case "Finish":
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-                GameController.Finish();
+                //GameController.Finish();
             break;
             case "Floor":
                 isInFloor = true;

@@ -8,12 +8,15 @@ public class Objeto : MonoBehaviour
     GameObject Interacao = null;
     bool Colidiu = false;
     public Sprite InteracaoImagem;
+
     void FixedUpdate()
     {
         if (Input.GetKey("f") && Colidiu)
         {
-            Debug.Log("INTERACAO!!!");
-            //gameObject.SetActive(false);
+            if(gameObject.tag == "Finish")
+            {
+                GameController.Finish();
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
