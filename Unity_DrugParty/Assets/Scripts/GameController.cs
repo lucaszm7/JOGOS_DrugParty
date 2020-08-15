@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameController : MonoBehaviour{
 
+    static public GameController instance;
     // List sem elementos Duplicados
     HashSet<string> Itens = new HashSet<string>();
 
@@ -12,11 +15,15 @@ public class GameController : MonoBehaviour{
     public Sprite beck;
     public Sprite agua;
     private bool isPaused = false;
+    public static int part = 1;
     /*int tempo = 0;
     bool end = false;
     GameObject[] listItem;*/
 
-    
+    void Awake(){ 
+      instance = this;
+    }
+     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -26,9 +33,16 @@ public class GameController : MonoBehaviour{
         
     }
 
-    public static void Finish()
-    {
+    public static void Finish(){
+        part++;
         Time.timeScale = 0;
+        instance.StartCoroutine(SceneSwitch());
+    }
+
+    static IEnumerator SceneSwitch(){
+        AsyncOperation load = SceneManager.LoadSceneAsync("Cutscene", LoadSceneMode.Additive);
+        yield return load;
+        SceneManager.UnloadSceneAsync("Main");
     }
 
     public void addItem(Item itemPass){

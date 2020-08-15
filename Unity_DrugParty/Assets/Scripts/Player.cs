@@ -36,8 +36,7 @@ public class Player : MonoBehaviour
     }
 
     // Movimentação da Camera
-    void LateUpdate()
-    {
+    void LateUpdate(){
         float positionY = transform.position.y;
         float positionX = transform.position.x;
         if (positionY < 0) positionY = 0;
@@ -100,7 +99,7 @@ public class Player : MonoBehaviour
         switch(collision.gameObject.tag){
             case "Finish":
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-                //GameController.Finish();
+                GameController.Finish();
             break;
             case "Floor":
                 isInFloor = true;

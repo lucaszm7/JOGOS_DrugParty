@@ -7,17 +7,16 @@ public class CutsceneController : MonoBehaviour {
 
 	public Texture2D RectangleTexture;
 
-    [SerializeField]
     SpriteRenderer spriteRenderer;
-
+    [SerializeField]
 	CutsceneObject[] _listCustscene;
     CutsceneObject _currentScene;
 	int index = -1;
 	int max = 0;
-	float delay = 0.05f;
+	float delay = 0.03f;
 	string TextinLine = "";
-    int part = 1;
-	
+    [SerializeField]
+    int part = 0;
 
 	bool IsComplete{
 		get{
@@ -28,16 +27,19 @@ public class CutsceneController : MonoBehaviour {
 	}
 
     void Start(){
+        part = GameController.part;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //spriteRenderer.sortingOrder = 30;
-    	TextAsset CutsceneInfo = Resources.Load<TextAsset>("XML/Part"+part);
+    	LoadCutScenes();
+    }
+
+    void LoadCutScenes(){
+        TextAsset CutsceneInfo = Resources.Load<TextAsset>("XML/Part"+part);
         _listCustscene = XMLParser.ParserCutscene(CutsceneInfo.text);
         max = _listCustscene.Length;
         Step();
     }
 
     void Update(){
-    	//var sprite = Resources.Load<Sprite>("Sprites/sprite01");
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fire1")){
             if(IsComplete){
             	if(index >= max-1){
@@ -48,14 +50,13 @@ public class CutsceneController : MonoBehaviour {
             }else{
                 StopAllCoroutines();
                 TextinLine = _currentScene.Text;
-                GameObject.Destroy(this);
             }
         }
     }
 
-     IEnumerator SceneSwitch(){
-        SceneManager.LoadScene("Main", LoadSceneMode.Single);
-        yield return null;
+    IEnumerator SceneSwitch(){
+        AsyncOperation load = SceneManager.LoadSceneAsync("Main", LoadSceneMode.Additive);
+        yield return load;
         SceneManager.UnloadSceneAsync("Cutscene");
     }
 
