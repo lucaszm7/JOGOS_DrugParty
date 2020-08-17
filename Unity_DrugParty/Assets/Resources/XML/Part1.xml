@@ -18,4 +18,10 @@
 		<title>Amigo 2</title>
 		<text>É, vai ser muito louco, vamos virar a noite hoje, quem sabe você não pega alguém? </text>
 	</cutscene>
+  <cutscene>
+    <id>4</id>
+    <type>Legend</type>
+    <title>The Block</title>
+    <text></text>
+  </cutscene>
 </cutscenes>	
