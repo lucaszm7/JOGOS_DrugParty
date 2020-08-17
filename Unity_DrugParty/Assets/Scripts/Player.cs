@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         switch(collision.gameObject.tag){
             case "Finish":
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-                GameController.Finish();
+                //GameController.Finish();
             break;
             case "Floor":
                 isInFloor = true;
