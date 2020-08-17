@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour{
     }
 
     static IEnumerator SceneSwitch(){
-        AsyncOperation load = SceneManager.LoadSceneAsync("Cutscene", LoadSceneMode.Additive);
+        AsyncOperation load = SceneManager.LoadSceneAsync("Cutscene", LoadSceneMode.Single);
         yield return load;
         SceneManager.UnloadSceneAsync("Main");
     }

@@ -50,12 +50,13 @@ public class CutsceneController : MonoBehaviour {
             }else{
                 StopAllCoroutines();
                 TextinLine = _currentScene.Text;
+                //GameObject.Destroy(this);
             }
         }
     }
 
     IEnumerator SceneSwitch(){
-        AsyncOperation load = SceneManager.LoadSceneAsync("Main", LoadSceneMode.Additive);
+        AsyncOperation load = SceneManager.LoadSceneAsync("Main", LoadSceneMode.Single);
         yield return load;
         SceneManager.UnloadSceneAsync("Cutscene");
     }
