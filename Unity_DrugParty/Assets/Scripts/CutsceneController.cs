@@ -14,7 +14,8 @@ public class CutsceneController : MonoBehaviour {
 	int index = -1;
 	int max = 0;
 	float delay = 0.03f;
-	string TextinLine = "";
+    [SerializeField]
+ 	string TextinLine = "";
     [SerializeField]
     int part = 0;
 
@@ -41,14 +42,15 @@ public class CutsceneController : MonoBehaviour {
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fire1")){
+           // StopAllCoroutines();
             if(IsComplete){
             	if(index >= max-1){
-                    StartCoroutine(SceneSwitch());
+                    SceneManager.LoadScene("Main", LoadSceneMode.Single);
+                    //StartCoroutine(SceneSwitch());
                 }else{
                     Step();
     		    }
             }else{
-                StopAllCoroutines();
                 TextinLine = _currentScene.Text;
                 //GameObject.Destroy(this);
             }
@@ -66,15 +68,18 @@ public class CutsceneController : MonoBehaviour {
         _currentScene = _listCustscene[index];
         TextinLine = "";
         StartCoroutine(Writing());
-        Debug.Log(Resources.Load<Sprite>("Cutscenes/Part"+part+"/"+_currentScene.Id));
         spriteRenderer.sprite = Resources.Load<Sprite>("Cutscenes/Part"+part+"/"+_currentScene.Id);
     }
 
     IEnumerator Writing(){
     	string text = _currentScene.Text;
-    	int max = text.Length;
-        for(int i=0;i<max;i++){
+    	//int max = text.Length;
+        int i =0;
+        //for(int i=0;i<max;i++){
+        while(!IsComplete){ 
             TextinLine += text[i];
+            i++;
+            Debug.Log(delay);
             yield return new WaitForSeconds(delay);
         }
     }
@@ -87,14 +92,14 @@ public class CutsceneController : MonoBehaviour {
         int height = Camera.main.pixelHeight;   
         Rect gui;
         if(title != ""){
-
+            float widthText = LengthMessage(title) + 15;
             if(type == CutscenesType.Dialog){
-                gui = new Rect(15,height-110,100,25);
+                gui = new Rect(15,height-110,widthText,25);
             }else{
-                gui = new Rect(15,height-40,100,25);    
+                gui = new Rect(15,height-40,widthText,25);    
             }
             GUI.DrawTexture(gui,RectangleTexture);
-            gui.x += 6;
+            gui.x += 12;
             gui.y += 1;
             GUILayout.BeginArea(gui);
             GUILayout.Label(title);
@@ -113,4 +118,9 @@ public class CutsceneController : MonoBehaviour {
             GUILayout.EndArea();
         }
     }
+
+     float LengthMessage(string message){
+        GUIStyle style = GUI.skin.box;
+        return style.CalcSize( new GUIContent(message) ).x;
+     }
 }
