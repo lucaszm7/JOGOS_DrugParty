@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <cutscenes>
 	<cutscene>
-		<id>1</id>
+		<id>0</id>
 		<type>Legend</type>
 		<title>Casa do Lucas</title>
 		<text></text>
 	</cutscene>
 	<cutscene>
-		<id>2</id>
+		<id>1</id>
 		<type>Dialog</type>
 		<title>Amigo 1</title>
 		<text>E Aí, dezoitão, bora aproveitar e ir numa festa com o pessoal, você vai se amarrar.</text>
 	</cutscene>
 	<cutscene>
-		<id>3</id>
+		<id>2</id>
 		<type>Dialog</type>
 		<title>Amigo 2</title>
-		<text>É, vai ser muito louco, vamos virar a noite hoje, quem sabe você não pega alguém? </text>
+		<text>É, vai ser muito louco, vamos virar a noite hoje, quem sabe você não pega alguém?</text>
+	</cutscene>
+	<cutscene>
+		<id>3</id>
+		<type>Dialog</type>
+		<title>Lucas</title>
+		<text>BORA. </text>
+	</cutscene>
+	<cutscene>
+		<id>4</id>
+		<type>Legend</type>
+		<title></title>
+		<text></text>
 	</cutscene>
 </cutscenes>	
