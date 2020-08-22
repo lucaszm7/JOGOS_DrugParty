@@ -45,7 +45,11 @@ public class CutsceneController : MonoBehaviour {
            // StopAllCoroutines();
             if(IsComplete){
             	if(index >= max-1){
-                    SceneManager.LoadScene("Main", LoadSceneMode.Single);
+                    if(part == 2){
+                        Application.Quit();
+                    }else{
+                        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+                    }
                     //StartCoroutine(SceneSwitch());
                 }else{
                     Step();
