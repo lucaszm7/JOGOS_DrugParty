@@ -30,4 +30,10 @@
 		<title></title>
 		<text></text>
 	</cutscene>
+  <cutscene>
+    <id>4</id>
+    <type>Legend</type>
+    <title>The Block</title>
+    <text></text>
+  </cutscene>
 </cutscenes>	
