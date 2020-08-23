@@ -8,6 +8,7 @@ public class Objeto : MonoBehaviour
     GameObject Interacao = null;
     bool Colidiu = false;
     public Sprite InteracaoImagem;
+    public bool Interagiu;
 
     void FixedUpdate()
     {
@@ -16,6 +17,10 @@ public class Objeto : MonoBehaviour
             if(gameObject.tag == "Finish")
             {
                 GameController.Finish();
+            }
+            if (gameObject.tag == "Escada")
+            {
+                EscadasScrpt.Teste();
             }
         }
     }

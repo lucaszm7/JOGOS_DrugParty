@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour{
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = true;
+            isPaused = !(isPaused);
         }
         
     }

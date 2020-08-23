@@ -158,7 +158,7 @@ Transform:
   - {fileID: 1469662182}
   - {fileID: 476802269}
   m_Father: {fileID: 768227257}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7415879
 MonoBehaviour:
@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!50 &7415880
 Rigidbody2D:
   serializedVersion: 4
@@ -424,7 +425,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 768227257}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &171595477
 SpriteRenderer:
@@ -491,6 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!61 &171595479
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -648,11 +650,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344163037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.788, y: 0.39, z: -1.6736512}
+  m_LocalPosition: {x: 5.7, y: 0.461, z: -1.6736512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 768227257}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &344163039
 SpriteRenderer:
@@ -719,6 +721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!61 &344163041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -814,6 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!212 &345396526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1241,6 +1245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!212 &668915717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1413,11 +1418,11 @@ Transform:
   m_LocalPosition: {x: 2.724449, y: -0.5737947, z: 1.6736512}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 344163038}
   - {fileID: 1969029008}
   - {fileID: 7415878}
   - {fileID: 1755120062}
   - {fileID: 171595476}
-  - {fileID: 344163038}
   - {fileID: 883993105}
   - {fileID: 1724430964}
   - {fileID: 1477122819}
@@ -1705,6 +1710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!61 &883993108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2473,6 +2479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!61 &1477122822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2990,6 +2997,7 @@ GameObject:
   - component: {fileID: 1684067481}
   - component: {fileID: 1684067480}
   - component: {fileID: 1684067479}
+  - component: {fileID: 1684067482}
   m_Layer: 0
   m_Name: "ch\xE3o"
   m_TagString: Floor
@@ -3087,6 +3095,27 @@ Transform:
   m_Father: {fileID: 352902663}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1684067482
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684067478}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1703561527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,6 +3297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!61 &1724430967
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3347,7 +3377,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 768227257}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1755120063
 SpriteRenderer:
@@ -3414,6 +3444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
 --- !u!61 &1755120065
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3547,7 +3578,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3577,6 +3608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: -681231657954369314, guid: a96a079d981cae14db00cfd51e277fa2,
     type: 3}
+  Interagiu: 0
 --- !u!50 &1858049404
 Rigidbody2D:
   serializedVersion: 4
@@ -3611,6 +3643,7 @@ GameObject:
   - component: {fileID: 1969029012}
   - component: {fileID: 1969029013}
   - component: {fileID: 1969029010}
+  - component: {fileID: 1969029011}
   m_Layer: 0
   m_Name: Balada1
   m_TagString: Untagged
@@ -3630,7 +3663,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 768227257}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1969029009
 SpriteRenderer:
@@ -3697,6 +3730,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
     type: 3}
+  Interagiu: 0
+--- !u!95 &1969029011
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969029007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e9aeca94492e2648a50438c151f109c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &1969029012
 BoxCollider2D:
   m_ObjectHideFlags: 0
