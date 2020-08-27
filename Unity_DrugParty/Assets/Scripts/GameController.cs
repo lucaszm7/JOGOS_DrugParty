@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class GameController : MonoBehaviour{
+public class GameController : MonoBehaviour
+{
 
     static public GameController instance;
     // List sem elementos Duplicados
@@ -16,26 +17,38 @@ public class GameController : MonoBehaviour{
     public Sprite agua;
     private bool isPaused = false;
     public static int part = 1;
-    /*int tempo = 0;
-    bool end = false;
-    GameObject[] listItem;*/
+
+    [SerializeField]
+    private GameObject imagemGameOver;
+    [SerializeField]
+    private GameObject Player;
+    private Player scriptPlayer;
 
     void Awake(){ 
-      instance = this;
+        instance = this;
+        this.imagemGameOver.SetActive(false);
+        scriptPlayer = this.Player.GetComponent<Player>();
     }
      
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !(isPaused);
+            changePause();
+            OnApplicationPause(isPaused);
         }
-        
+        if (isPaused)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                changePause();
+                OnApplicationPause(isPaused);
+            }
+        }
     }
 
     public static void Finish(){
         part++;
-        Time.timeScale = 0;
         instance.StartCoroutine(SceneSwitch());
     }
 
@@ -51,9 +64,9 @@ public class GameController : MonoBehaviour{
             return;
         }
     	float x = Camera.main.transform.position.x, y = Camera.main.transform.position.y;
-        x = x - 3.1f;
+        x = x - 3.0f;
         y = y - 1.2f;
-        float newItemx = 0.2f;
+        float newItemx = 0.3f;
         x += newItemx * Itens.Count;
         Itens.Add(itemPass.name);
 
@@ -83,43 +96,21 @@ public class GameController : MonoBehaviour{
     void OnGUI()
     {
         if (isPaused)
-            GUI.Label(new Rect(100, 100, 50, 30), "Game paused");
+            GUI.Label(new Rect(512, 200, 100, 50), " ===========\nGAME PAUSED\n ===========");
     }
     void OnApplicationFocus(bool hasFocus)
     {
         isPaused = !hasFocus;
-        if (!isPaused)
-        {
-            Time.timeScale = 1;
-        }
-    }
-    public void OnApplicationPause(bool pauseStatus)
-    {
-        isPaused = pauseStatus;
-        if (isPaused)
-        {
-            Time.timeScale = 0;
-        }
-    }
+        OnApplicationPause(isPaused);
 
+    }
+    public void changePause()
+    {
+        this.isPaused = !this.isPaused;
+    }
+    void OnApplicationPause(bool pause)
+    {
+        this.imagemGameOver.SetActive(pause);
+        scriptPlayer.isPaused = pause;
+    }
 }
-
-    /*void Update()
-    {
-        StartCoroutine(ContarTempo());
-    }
-    void OnGUI()
-    {
-        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth - 30, 10, 30, 20));
-        GUILayout.Label("=== TEMPO ===" + tempo);
-        GUILayout.EndArea();
-
-    }
-    IEnumerator ContarTempo()
-    {
-        while (!end)
-        {
-            tempo += 1;
-            yield return new WaitForSeconds(1);
-        }
-    }*/

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    float velocity;
+    public float velocity;
     [SerializeField]
     float salto;
     [SerializeField]
@@ -13,6 +12,7 @@ public class Player : MonoBehaviour
 
     //Vida decai com o uso de Drogas
     int vida;
+    public bool isPaused = false;
 
     float movimento;
     bool isInFloor;
@@ -53,7 +53,10 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
-        Movimentacao();
+        if (!isPaused)
+        {
+            Movimentacao();
+        }
         PlayerAnimation();
     }
 

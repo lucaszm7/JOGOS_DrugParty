@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RectangleTexture: {fileID: 2800000, guid: 6d7e40bb36805be4198e44ca70f6919f, type: 3}
   _listCustscene: []
+  TextinLine: 
   part: 1
 --- !u!4 &267011501
 Transform:
@@ -243,7 +244,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132186346}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1132186348
 Camera:
   m_ObjectHideFlags: 0
