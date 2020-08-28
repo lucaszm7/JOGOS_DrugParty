@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class GameController : MonoBehaviour
@@ -18,20 +17,84 @@ public class GameController : MonoBehaviour
     private bool isPaused = false;
     public static int part = 1;
 
+    //[SerializeField]
+    //GameObject Camera;
     [SerializeField]
-    private GameObject imagemGameOver;
+    GameObject imagemGameOver;
     [SerializeField]
-    private GameObject Player;
-    private Player scriptPlayer;
+    //GameObject Player;
+    Player scriptPlayer;
+
+    [SerializeField]
+    Camera mainCamera;
+
+    bool actived = false;
 
     void Awake(){ 
         instance = this;
         this.imagemGameOver.SetActive(false);
-        scriptPlayer = this.Player.GetComponent<Player>();
+        //scriptPlayer = this.Player.GetComponent<Player>();
+    }
+
+    IEnumerator AnimationCamera2(){
+        float n = 1.2f;
+        bool soma = true;
+        while(true){
+            mainCamera.orthographicSize = n;
+            yield return new WaitForSeconds(0.01f);
+            if(soma)
+                n += 0.001f;
+            else
+                n -= 0.001f;
+
+            if(n > 1.4f)
+                soma = false;
+            else if(n < 1.2f)
+                soma = true;
+
+            if(Mathf.RoundToInt(Random.Range(0f,5000f)) % 50 == 0){
+                soma = !soma;
+            }
+        }
     }
      
-    void Update()
-    {
+    IEnumerator AnimationCamera(){
+        float min = mainCamera.transform.localEulerAngles.z;
+        float max = 0f;
+        float i = 0;
+        bool soma = true;
+        float n = 1.3f;
+        int random = 0;
+        while(true){
+            mainCamera.transform.localEulerAngles = new Vector3(0,0,i);
+            //mainCamera.transform.Rotate(0,0,i,Space.Self);
+            yield return new WaitForSeconds(0.001f);
+            if(soma)
+                i += 0.1f;
+            else
+                i -= 0.1f;
+
+            if(i > 6f)
+                soma = false;
+            else if(i < -6f)
+                soma = true;
+
+            if(Mathf.RoundToInt(Random.Range(0f,5000f)) % 1000 == 0){
+                soma = !soma;
+            }
+        }
+    }
+
+    void Update(){
+        if(!actived && Player.bebado){
+            actived = true;
+            StartCoroutine(AnimationCamera());
+            StartCoroutine(AnimationCamera2());
+        }
+        if(actived && !Player.bebado){
+            StopAllCoroutines();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             changePause();
@@ -49,13 +112,7 @@ public class GameController : MonoBehaviour
 
     public static void Finish(){
         part++;
-        instance.StartCoroutine(SceneSwitch());
-    }
-
-    static IEnumerator SceneSwitch(){
-        AsyncOperation load = SceneManager.LoadSceneAsync("Cutscene", LoadSceneMode.Single);
-        yield return load;
-        SceneManager.UnloadSceneAsync("Main");
+        LoadScene.Load("Cutscene");
     }
 
     public void addItem(Item itemPass){
@@ -111,6 +168,6 @@ public class GameController : MonoBehaviour
     void OnApplicationPause(bool pause)
     {
         this.imagemGameOver.SetActive(pause);
-        scriptPlayer.isPaused = pause;
+        //scriptPlayer.isPaused = pause;
     }
 }

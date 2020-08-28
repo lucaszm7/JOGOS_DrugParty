@@ -7,8 +7,7 @@ public class Player : MonoBehaviour
     public float velocity;
     [SerializeField]
     float salto;
-    [SerializeField]
-    bool bebado;
+    public static bool bebado = false;
 
     //Vida decai com o uso de Drogas
     int vida;
@@ -32,7 +31,7 @@ public class Player : MonoBehaviour
         this.velocity = 3;
         this.isInFloor = true;
         this.salto = 1.3f;
-        this.bebado = false;
+     //   this.bebado = false;
     }
 
     // Movimentação da Camera
@@ -45,11 +44,6 @@ public class Player : MonoBehaviour
         // CAMERA NORMAL
         Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
 
-        // CAMERA BEBADA
-        if (this.bebado)
-        {
-            Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
-        }
     }
 
     void Update(){

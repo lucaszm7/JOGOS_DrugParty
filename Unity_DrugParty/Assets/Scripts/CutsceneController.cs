@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CutsceneController : MonoBehaviour {
 
@@ -42,15 +41,14 @@ public class CutsceneController : MonoBehaviour {
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fire1")){
-           // StopAllCoroutines();
+            StopAllCoroutines();
             if(IsComplete){
             	if(index >= max-1){
                     if(part == 2){
                         Application.Quit();
                     }else{
-                        SceneManager.LoadScene("Main", LoadSceneMode.Single);
+                       LoadScene.Load("Level"+part);
                     }
-                    //StartCoroutine(SceneSwitch());
                 }else{
                     Step();
     		    }
@@ -59,12 +57,6 @@ public class CutsceneController : MonoBehaviour {
                 //GameObject.Destroy(this);
             }
         }
-    }
-
-    IEnumerator SceneSwitch(){
-        AsyncOperation load = SceneManager.LoadSceneAsync("Main", LoadSceneMode.Single);
-        yield return load;
-        SceneManager.UnloadSceneAsync("Cutscene");
     }
 
     void Step(){
