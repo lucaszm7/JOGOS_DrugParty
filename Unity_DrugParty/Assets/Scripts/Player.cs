@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     // Pega os componentes necessários quando o Player eh criado
-    void Awake()
-    {
+    void Awake(){
+        Debug.Log("Ativou");
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
 
         // CAMERA NORMAL
         Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
-
     }
 
     void Update(){

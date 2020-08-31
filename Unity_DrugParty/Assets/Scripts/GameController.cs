@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
     void Awake(){ 
         instance = this;
         this.imagemGameOver.SetActive(false);
-        //scriptPlayer = this.Player.GetComponent<Player>();
+        scriptPlayer = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     IEnumerator AnimationCamera2(){
@@ -168,6 +168,6 @@ public class GameController : MonoBehaviour
     void OnApplicationPause(bool pause)
     {
         this.imagemGameOver.SetActive(pause);
-        //scriptPlayer.isPaused = pause;
+        scriptPlayer.isPaused = pause;
     }
 }

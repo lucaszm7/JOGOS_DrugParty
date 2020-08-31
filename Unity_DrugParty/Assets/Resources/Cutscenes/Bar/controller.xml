@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cutscenes>
+	<cutscene>
+		<id>5</id>
+		<type>Dialog</type>
+		<title>Amigo 2</title>
+		<text>Essa festa está irada, vamos virar a noite.</text>
+	</cutscene>
+	<cutscene>
+		<id>6</id>
+		<type>Dialog</type>
+		<title>Amigo 1</title>
+		<text>E a diversão nem começou ainda.</text>
+	</cutscene>
+	<cutscene>
+		<id>7</id>
+		<type>Legend</type>
+		<title></title>
+		<text></text>
+	</cutscene>
+	<cutscene>
+		<id>8</id>
+		<type>Dialog</type>
+		<title>Amigo 1</title>
+		<text>Não vai arregar agora né Lucas?</text>
+	</cutscene>
+	<cutscene>
+		<id>9</id>
+		<type>Dialog</type>
+		<title>Amigo 2</title>
+		<text>É a primeira vez dele, vamos com calma</text>
+	</cutscene>
+	<cutscene>
+		<id>10</id>
+		<type>Dialog</type>
+		<title>Amigo 2</title>
+		<text> vem Lucas, vamos pegar uma cerveja.</text>
+	</cutscene>
+</cutscenes>	

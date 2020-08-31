@@ -2,25 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using System;
+
+public enum ObjectType{
+    Nenhum,
+    Saida,
+    Escada,
+    Cadeira
+}
+
 
 public class Objeto : MonoBehaviour
 {
     GameObject Interacao = null;
     bool Colidiu = false;
+    [SerializeField]
+    ObjectType type;
     public Sprite InteracaoImagem;
     public bool Interagiu;
+    bool foi = false;
 
     void FixedUpdate()
     {
-        if (Input.GetKey("f") && Colidiu)
-        {
-            if(gameObject.tag == "Finish")
-            {
-                GameController.Finish();
-            }
-            if (gameObject.tag == "Escada")
-            {
-                EscadasScrpt.Teste();
+        if (Input.GetKey("f") && Colidiu && !foi){
+            foi = true;
+            switch(type){
+                case ObjectType.Saida:
+                    //GameController.Finish();
+                break;
+                case ObjectType.Escada:
+                    //EscadasScrpt.Teste();
+                break;  
+                case ObjectType.Cadeira:
+                   // gameObject.AddComponent(Type.GetType("CS_Bar"));
+                    gameObject.AddComponent<CutsceneController>();
+                    CutsceneController script = gameObject.GetComponent<CutsceneController>();
+                    script.SetName("Bar");
+                    script.Go();
+                break;
             }
         }
     }

@@ -7,7 +7,7 @@ public class GameIntro : MonoBehaviour{
 
 	public void StartGame(){
 		//SceneManager.LoadScene("Cutscene", LoadSceneMode.Single);
-		LoadScene.Load("Cutscene");
+		LoadScene.Load("Level1");
 		//Debug.Log("Iniciar o jogo");
  	}
 
