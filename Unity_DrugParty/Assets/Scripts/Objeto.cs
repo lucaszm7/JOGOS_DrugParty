@@ -53,7 +53,7 @@ public class Objeto : MonoBehaviour
             Interacao.transform.parent = this.transform;
             SpriteRenderer spriteRenderer = Interacao.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = InteracaoImagem;
-            spriteRenderer.sortingLayerID = 10;
+            spriteRenderer.sortingOrder = 30;
             StartCoroutine(DestroiFilho());
         }
         else if (collision.gameObject.tag == "Player")
