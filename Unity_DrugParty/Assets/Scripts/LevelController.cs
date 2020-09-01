@@ -110,6 +110,7 @@ public class LevelController : MonoBehaviour
     }
 
     public static void Finish(){
+        Debug.Log("FISISH!!!!!!!!\n====================");
         LoadScene.Load("Level2");
     }
 
@@ -157,7 +158,6 @@ public class LevelController : MonoBehaviour
     {
         isPaused = !hasFocus;
         OnApplicationPause(isPaused);
-
     }
     public void changePause()
     {

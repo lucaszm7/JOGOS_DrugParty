@@ -24,22 +24,26 @@ public class Objeto : MonoBehaviour
     public Sprite InteracaoImagem;
     public bool Interagiu;
     bool foi = false;
-
+    CutsceneController script;
+    void Awake()
+    {
+        gameObject.AddComponent<CutsceneController>();
+        script = gameObject.GetComponent<CutsceneController>();
+    }
     void FixedUpdate()
     {
         if (Input.GetKey("f") && Colidiu && !foi){
             foi = true;
             switch(type){
                 case ObjectType.Saida:
-                    //GameController.Finish();
-                break;
+                    script.SetName("Part2");
+                    script.Go();
+                    break;
                 case ObjectType.Escada:
                     //EscadasScrpt.Teste();
                 break;  
                 case ObjectType.Cadeira:
                    // gameObject.AddComponent(Type.GetType("CS_Bar"));
-                    gameObject.AddComponent<CutsceneController>();
-                    CutsceneController script = gameObject.GetComponent<CutsceneController>();
                     script.SetName("Bar");
                     script.Go();
                 break;
