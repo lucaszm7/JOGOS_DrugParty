@@ -610,6 +610,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -623,10 +624,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 3f2eb23c-eba4-48a4-b127-b680faf73829
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Drug Party
+  organizationId: lucasalp1
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
