@@ -153,6 +153,27 @@ public class LevelController : MonoBehaviour
     {
         if (isPaused)
             GUI.Label(new Rect(512, 200, 100, 50), " ===========\nGAME PAUSED\n ===========");
+
+        GUILayout.BeginArea(new Rect(Camera.main.pixelWidth - 100, 10, 50, 20));
+        string timeString = "";
+        int time = GameController.time;
+
+        if(time < 60){
+            timeString = "00";
+        }else{
+            int minutes = time / 60;
+            if(minutes < 10) timeString += "0";
+            timeString += minutes;
+        }
+        int seconds = (time % 60);
+        timeString += ":";
+        if(seconds < 10) timeString += "0";
+        Debug.Log(seconds);
+        timeString += seconds;
+
+        GUILayout.Label(timeString);
+        GUILayout.EndArea();
+
     }
     void OnApplicationFocus(bool hasFocus)
     {
