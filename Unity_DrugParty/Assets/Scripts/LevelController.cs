@@ -120,9 +120,9 @@ public class LevelController : MonoBehaviour
             return;
         }
     	float x = Camera.main.transform.position.x, y = Camera.main.transform.position.y;
-        x = x - 3.0f;
-        y = y - 1.2f;
-        float newItemx = 0.3f;
+        x = x - 1.1f;
+        y = y + 1.1f;
+        float newItemx = 0.25f;
         x += newItemx * Itens.Count;
         Itens.Add(itemPass.name);
 
