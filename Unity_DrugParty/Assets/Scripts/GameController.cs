@@ -18,11 +18,36 @@ public class GameController : MonoBehaviour {
 		instance.StartCoroutine(instance.TimeCount());
 	}
 
+	public static void StopTime(){
+		instance.StopAllCoroutines();		
+	}
+
 	IEnumerator TimeCount(){
 		while(true){
 			GameController.time++;
 			yield return new WaitForSeconds(0.05f);
 		}
 	}
+
+	void OnGUI(){
+
+        string timeString = "";
+        int time = GameController.time;
+
+        if(time < 60){
+            timeString = "00";
+        }else{
+            int minutes = time / 60;
+            if(minutes < 10) timeString += "0";
+            timeString += minutes;
+        }
+        int seconds = (time % 60);
+        timeString += ":";
+        if(seconds < 10) timeString += "0";
+        timeString += seconds;
+
+        GUI.Label(new Rect(Camera.main.pixelWidth - 100, 10, 50, 20),timeString);
+
+    }
 
 }
