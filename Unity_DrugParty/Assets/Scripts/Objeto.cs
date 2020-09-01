@@ -49,10 +49,11 @@ public class Objeto : MonoBehaviour
         {
             Colidiu = true;
             Interacao = new GameObject("Interacao: " + this.name);
-            Interacao.transform.position = this.transform.position;
+            Interacao.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
             Interacao.transform.parent = this.transform;
             SpriteRenderer spriteRenderer = Interacao.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = InteracaoImagem;
+            spriteRenderer.sortingLayerID = 10;
             StartCoroutine(DestroiFilho());
         }
         else if (collision.gameObject.tag == "Player")
@@ -64,7 +65,7 @@ public class Objeto : MonoBehaviour
     }
     IEnumerator DestroiFilho()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Interacao.SetActive(false);
         Colidiu = false;
 

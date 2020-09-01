@@ -13,7 +13,7 @@ public class LoadScene : MonoBehaviour{
 
     public static void Load(string name){
     	LoadScene.name = name;
-        SceneManager.LoadScene("Loading", LoadSceneMode.Single);
+        SceneManager.LoadScene(LoadScene.name, LoadSceneMode.Single);
     }
 
 	IEnumerator SceneSwitch(string name){
