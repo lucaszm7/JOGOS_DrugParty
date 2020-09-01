@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 0
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!50 &7415880
 Rigidbody2D:
@@ -609,9 +609,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 0
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!61 &171595479
 BoxCollider2D:
@@ -914,9 +914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 2
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!61 &344163041
 BoxCollider2D:
@@ -1011,9 +1011,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 0
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!212 &345396526
 SpriteRenderer:
@@ -1731,9 +1731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 0
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!212 &668915717
 SpriteRenderer:
@@ -2376,9 +2376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 0
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!61 &883993108
 BoxCollider2D:
@@ -3459,6 +3459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 9100000, guid: de55e6586971bc447a3dc4afb4acd0c7, type: 2}
   type: 3
   InteracaoImagem: {fileID: 21300000, guid: fd19ea1721ff6f44ab0c5d9395af9677, type: 3}
   Interagiu: 0
@@ -4278,9 +4279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteracaoAnimator: {fileID: 0}
   type: 0
-  InteracaoImagem: {fileID: 4213703100412012377, guid: e074fced5ea509740af766093f9e49f3,
-    type: 3}
+  InteracaoImagem: {fileID: 0}
   Interagiu: 0
 --- !u!61 &1724430967
 BoxCollider2D:
@@ -4524,7 +4525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc69fa36da64429439159424afe48c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  InteracaoAnimator: {fileID: 9100000, guid: de55e6586971bc447a3dc4afb4acd0c7, type: 2}
+  type: 1
   InteracaoImagem: {fileID: 21300000, guid: fd19ea1721ff6f44ab0c5d9395af9677, type: 3}
   Interagiu: 0
 --- !u!50 &1858049404

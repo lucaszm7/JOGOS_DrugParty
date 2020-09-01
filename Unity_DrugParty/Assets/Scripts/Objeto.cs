@@ -14,6 +14,9 @@ public enum ObjectType{
 
 public class Objeto : MonoBehaviour
 {
+    [SerializeField]
+    RuntimeAnimatorController InteracaoAnimator;
+
     GameObject Interacao = null;
     bool Colidiu = false;
     [SerializeField]
@@ -54,6 +57,8 @@ public class Objeto : MonoBehaviour
             SpriteRenderer spriteRenderer = Interacao.AddComponent<SpriteRenderer>();
             spriteRenderer.sprite = InteracaoImagem;
             spriteRenderer.sortingOrder = 30;
+            Animator animatorRenderer = Interacao.AddComponent<Animator>();
+            animatorRenderer.runtimeAnimatorController = InteracaoAnimator;
             StartCoroutine(DestroiFilho());
         }
         else if (collision.gameObject.tag == "Player")
