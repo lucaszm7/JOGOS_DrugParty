@@ -10,7 +10,7 @@ public class CutsceneController : MonoBehaviour {
     internal string name;
 
     Texture2D RectangleTexture;
-    GameObject player;
+    GameObject[] listOcultos;
     SpriteRenderer spriteRenderer;
     CutsceneObject _currentScene;
 	int index = -1;
@@ -39,7 +39,9 @@ public class CutsceneController : MonoBehaviour {
     internal void Go(){
         Debug.Log("Isso ai");
         RectangleTexture = Resources.Load<Texture2D>("selection");
-        player = GameObject.FindWithTag("Player");
+        listOcultos = new GameObject[2];
+        listOcultos[0] = GameObject.FindWithTag("Player");
+        listOcultos[1] = GameObject.Find("PlayerCamera");
         spriteRenderer = GameObject.FindWithTag("Cutscene").GetComponent<SpriteRenderer>();
         TextAsset CutsceneInfo = Resources.Load<TextAsset>("Cutscenes/"+name+"/controller");
         _listCustscene = XMLParser.ParserCutscene(CutsceneInfo.text);
@@ -53,11 +55,17 @@ public class CutsceneController : MonoBehaviour {
         if(mode){
             Camera.main.transform.position = new Vector3(-10,-10,-10);
             Camera.main.orthographicSize = 4.49f;
-            player.SetActive(false);
+            ToggleActive(false);
         }else{
             Camera.main.transform.position = CutsceneController._currentPosition;
             Camera.main.orthographicSize = 1.3f;
-            player.SetActive(true);
+            ToggleActive(true);
+        }
+    }
+
+    void ToggleActive(bool mode){
+        foreach(GameObject go in listOcultos){
+            go.SetActive(mode);
         }
     }
 
