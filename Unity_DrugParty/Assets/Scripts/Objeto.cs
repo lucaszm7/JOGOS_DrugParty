@@ -26,10 +26,11 @@ public class Objeto : MonoBehaviour
     public bool Interagiu;
     bool foi = false;
     CutsceneController script;
+    CS_Bar cs;
     void Awake()
     {
         gameObject.AddComponent<CutsceneController>();
-        //script = gameObject.GetComponent<CutsceneController>();
+        cs = gameObject.AddComponent<CS_Bar>();
     }
     void FixedUpdate()
     {
@@ -37,22 +38,39 @@ public class Objeto : MonoBehaviour
             foi = true;
             switch(type){
                 case ObjectType.Saida:
-                    script.SetName("Part2");
-                    script.Go();
+                    if(LevelController.levelCS == 1)
+                    {
+
+                        LevelController.levelCS += 1;
+                        //==============
+                        Debug.Log(LevelController.levelCS);
+                        //==============
+                        StartCoroutine(DestroiFilho());
+                        cs.SetName("Part2");
+                        cs.Go();
+                    }
                     Player.fase2 = true;
                     break;
                 case ObjectType.Escada:
-                    //EscadasScrpt.Teste();
-                    script.SetName("Part3");
-                    script.Go();
+                    if (LevelController.levelCS == 2)
+                    {
+                        LevelController.levelCS += 1;
+                        //==============
+                        Debug.Log(LevelController.levelCS);
+                        //==============
+                        StartCoroutine(DestroiFilho());
+                        cs.SetName("Part3");
+                        cs.Go();
+                    }
                     break;  
                 case ObjectType.Cadeira:
-                   // CS_Bar cs = gameObject.AddComponent(Type.GetType("CS_Bar"));
-                    CS_Bar cs = gameObject.AddComponent<CS_Bar>();
+                    LevelController.levelCS += 1;
+                    //==============
+                    Debug.Log(LevelController.levelCS);
+                    //=============
+                    StartCoroutine(DestroiFilho());
                     cs.SetName("Bar");
                     cs.Go();
-                    /*GameObject bebida = (GameObject)Instantiate(Resources.Load("PreFab/Bebida"), this.transform.position, quaternion.identity);
-                    bebida.SetActive(true);*/
                 break;
             }
         }
@@ -61,6 +79,10 @@ public class Objeto : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && Interacao == null)
         {
+            if (this.name == "Saida" && LevelController.levelCS != 1)
+            {
+                return;
+            }
             Colidiu = true;
             Interacao = new GameObject("Interacao: " + this.name);
             Interacao.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
@@ -70,13 +92,13 @@ public class Objeto : MonoBehaviour
             spriteRenderer.sortingOrder = 30;
             Animator animatorRenderer = Interacao.AddComponent<Animator>();
             animatorRenderer.runtimeAnimatorController = InteracaoAnimator;
-            StartCoroutine(DestroiFilho());
+            
+            StartCoroutine(DesestabilizaFilho());
         }
-        else if (collision.gameObject.tag == "Player")
+        else if (collision.gameObject.tag == "Player" && !foi)
         {
             Colidiu = true;
-            Interacao.SetActive(true);
-            StartCoroutine(DestroiFilho());
+            StartCoroutine(DesestabilizaFilho());
         }
     }
     IEnumerator DestroiFilho()
@@ -84,6 +106,10 @@ public class Objeto : MonoBehaviour
         yield return new WaitForSeconds(2);
         Interacao.SetActive(false);
         Colidiu = false;
-
+    }
+    IEnumerator DesestabilizaFilho()
+    {
+        yield return new WaitForSeconds(2);
+        Colidiu = false;
     }
 }

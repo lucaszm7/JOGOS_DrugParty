@@ -16,12 +16,11 @@ public class LevelController : MonoBehaviour
     private bool isPaused = false;
     public static int part = 1;
 
-    //[SerializeField]
-    //GameObject Camera;
+    public static int levelCS = 0;
+
     [SerializeField]
     GameObject imagemGameOver;
     [SerializeField]
-    //GameObject Player;
     Player scriptPlayer;
 
     [SerializeField]
@@ -33,6 +32,9 @@ public class LevelController : MonoBehaviour
     void Awake(){ 
         this.imagemGameOver.SetActive(false);
         scriptPlayer = GameObject.FindWithTag("Player").GetComponent<Player>();
+        //==============
+        Debug.Log(levelCS);
+        //==============
     }
 
     IEnumerator AnimationCamera2(){

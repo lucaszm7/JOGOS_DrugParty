@@ -3,13 +3,13 @@
 	<cutscene>
 		<id>5</id>
 		<type>Dialog</type>
-		<title>Amigo 2</title>
+		<title>Ricardinho</title>
 		<text>Essa festa está irada, vamos virar a noite.</text>
 	</cutscene>
 	<cutscene>
 		<id>6</id>
 		<type>Dialog</type>
-		<title>Amigo 1</title>
+		<title>Cleber</title>
 		<text>E a diversão nem começou ainda.</text>
 	</cutscene>
 	<cutscene>
@@ -21,19 +21,19 @@
 	<cutscene>
 		<id>8</id>
 		<type>Dialog</type>
-		<title>Amigo 1</title>
-		<text>Não vai arregar agora né Lucas?</text>
+		<title>Cleber</title>
+		<text>Não vai arregar agora né Marthow?</text>
 	</cutscene>
 	<cutscene>
 		<id>9</id>
 		<type>Dialog</type>
-		<title>Amigo 2</title>
+		<title>Ricardinho</title>
 		<text>É a primeira vez dele, vamos com calma</text>
 	</cutscene>
 	<cutscene>
 		<id>10</id>
 		<type>Dialog</type>
-		<title>Amigo 2</title>
-		<text> vem Lucas, vamos pegar uma cerveja.</text>
+		<title>Ricardinho</title>
+		<text> vem Marthow, vamos pegar uma cerveja.</text>
 	</cutscene>
 </cutscenes>	
