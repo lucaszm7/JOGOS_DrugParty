@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using System;
+using Unity.Mathematics;
 
 public enum ObjectType{
     Nenhum,
@@ -42,11 +43,15 @@ public class Objeto : MonoBehaviour
                     break;
                 case ObjectType.Escada:
                     //EscadasScrpt.Teste();
-                break;  
+                    script.SetName("Part3");
+                    script.Go();
+                    break;  
                 case ObjectType.Cadeira:
-                   // gameObject.AddComponent(Type.GetType("CS_Bar"));
+                    // gameObject.AddComponent(Type.GetType("CS_Bar"));
                     script.SetName("Bar");
                     script.Go();
+                    GameObject bebida = (GameObject)Instantiate(Resources.Load("PreFab/Bebida"), this.transform.position, quaternion.identity);
+                    bebida.SetActive(true);
                 break;
             }
         }

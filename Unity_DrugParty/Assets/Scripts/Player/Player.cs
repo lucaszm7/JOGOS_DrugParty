@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         if (fase2 && !posFase2)
         {
             posFase2 = true;
-            this.transform.position = new Vector3(-1.77f, -4.12f, 0);
+            this.transform.position = new Vector3(19.43f, -4.12f, 0);
         }
         PlayerAnimation();
     }
