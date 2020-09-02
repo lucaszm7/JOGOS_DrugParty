@@ -36,9 +36,8 @@ public class CutsceneController : MonoBehaviour {
         name = newName;
     } 
 
-    internal void Go()
-    {
-        Debug.Log("Isso ai");
+    internal void Go(){
+        GameController.StopTime();
         RectangleTexture = Resources.Load<Texture2D>("selection");
         listOcultos = new GameObject[2];
         listOcultos[0] = GameObject.FindWithTag("Player");
@@ -73,6 +72,7 @@ public class CutsceneController : MonoBehaviour {
     }
 
     public virtual void Finish(){
+        GameController.StartTime();
         SwapPosition(false);
     }
 

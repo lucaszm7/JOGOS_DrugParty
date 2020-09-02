@@ -29,7 +29,7 @@ public class Objeto : MonoBehaviour
     void Awake()
     {
         gameObject.AddComponent<CutsceneController>();
-        script = gameObject.GetComponent<CutsceneController>();
+        //script = gameObject.GetComponent<CutsceneController>();
     }
     void FixedUpdate()
     {
@@ -47,11 +47,12 @@ public class Objeto : MonoBehaviour
                     script.Go();
                     break;  
                 case ObjectType.Cadeira:
-                    // gameObject.AddComponent(Type.GetType("CS_Bar"));
-                    script.SetName("Bar");
-                    script.Go();
-                    GameObject bebida = (GameObject)Instantiate(Resources.Load("PreFab/Bebida"), this.transform.position, quaternion.identity);
-                    bebida.SetActive(true);
+                   // CS_Bar cs = gameObject.AddComponent(Type.GetType("CS_Bar"));
+                    CS_Bar cs = gameObject.AddComponent<CS_Bar>();
+                    cs.SetName("Bar");
+                    cs.Go();
+                    /*GameObject bebida = (GameObject)Instantiate(Resources.Load("PreFab/Bebida"), this.transform.position, quaternion.identity);
+                    bebida.SetActive(true);*/
                 break;
             }
         }

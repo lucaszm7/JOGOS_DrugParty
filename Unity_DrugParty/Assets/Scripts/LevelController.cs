@@ -28,6 +28,7 @@ public class LevelController : MonoBehaviour
     Camera mainCamera;
 
     bool actived = false;
+    float i = 0;
 
     void Awake(){ 
         this.imagemGameOver.SetActive(false);
@@ -59,7 +60,6 @@ public class LevelController : MonoBehaviour
     IEnumerator AnimationCamera(){
         float min = mainCamera.transform.localEulerAngles.z;
         float max = 0f;
-        float i = 0;
         bool soma = true;
         float n = 1.3f;
         int random = 0;
@@ -83,6 +83,15 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    IEnumerator AnimationNormal(){
+        mainCamera.orthographicSize = 1.3f;
+        while(!(i > 1f && i < 1f)){
+            if(i > 0.1f) i -= 0.1f; else i += 0.1f;
+            mainCamera.transform.localEulerAngles = new Vector3(0,0,i);
+            yield return new WaitForSeconds(0.001f);
+        }
+    }
+
     void Update(){
         if(!actived && Player.bebado){
             actived = true;
@@ -92,6 +101,7 @@ public class LevelController : MonoBehaviour
         if(actived && !Player.bebado){
             actived = false;
             StopAllCoroutines();
+            StartCoroutine(AnimationNormal());
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -127,7 +137,7 @@ public class LevelController : MonoBehaviour
 
         GameObject newItem = new GameObject("Item X: "+ x +" Y: "+ y);
         newItem.transform.localPosition = new Vector3(x, y, 0);
-        newItem.transform.parent = Camera.main.transform;
+        newItem.transform.parent = GameObject.Find("PlayerCamera").transform;
         //newItem.transform.localScale = new Vector3(2,2,2);
         SpriteRenderer spriteRenderer = newItem.AddComponent<SpriteRenderer>();
         switch (itemPass.name)

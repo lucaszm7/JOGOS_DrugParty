@@ -5,12 +5,15 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
 	public static GameController instance;
-
+	public static GameObject items;
 	static public int level = 1; 
 	static public int score = 0;
 	static public int time = 0;
 
 	void Awake(){
+		GameController.items = GameObject.Find("ItemsColetaveis");
+		GameController.items.SetActive(false);
+		Debug.Log(GameObject.Find("ItemsColetaveis"));
 		instance = this;
 	}
 
@@ -25,7 +28,7 @@ public class GameController : MonoBehaviour {
 	IEnumerator TimeCount(){
 		while(true){
 			GameController.time++;
-			yield return new WaitForSeconds(0.05f);
+			yield return new WaitForSeconds(1f);
 		}
 	}
 
