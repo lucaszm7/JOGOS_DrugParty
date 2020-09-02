@@ -36,7 +36,8 @@ public class CutsceneController : MonoBehaviour {
         name = newName;
     } 
 
-    internal void Go(){
+    internal void Go()
+    {
         Debug.Log("Isso ai");
         RectangleTexture = Resources.Load<Texture2D>("selection");
         listOcultos = new GameObject[2];
@@ -53,7 +54,9 @@ public class CutsceneController : MonoBehaviour {
     internal void SwapPosition(bool mode){
         update = mode;
         if(mode){
-            Camera.main.transform.position = new Vector3(-10,-10,-10);
+            Camera.main.transform.position = new Vector3(-16.4f, -1.7f, -10);
+
+            //Camera.main.transform.position = new Vector3(-10, -10, -10);//this.transform.position;
             Camera.main.orthographicSize = 4.49f;
             ToggleActive(false);
         }else{
