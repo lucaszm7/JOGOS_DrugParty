@@ -38,6 +38,7 @@ public class Objeto : MonoBehaviour
                 case ObjectType.Saida:
                     script.SetName("Part2");
                     script.Go();
+                    Player.fase2 = true;
                     break;
                 case ObjectType.Escada:
                     //EscadasScrpt.Teste();

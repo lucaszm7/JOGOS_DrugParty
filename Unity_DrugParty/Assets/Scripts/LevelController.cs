@@ -110,7 +110,6 @@ public class LevelController : MonoBehaviour
     }
 
     public static void Finish(){
-        Debug.Log("FISISH!!!!!!!!\n====================");
         LoadScene.Load("Level2");
     }
 

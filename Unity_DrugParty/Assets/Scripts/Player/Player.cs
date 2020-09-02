@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     float salto;
     public static bool bebado = false;
-
+    public bool posFase2 = false;
     //Vida decai com o uso de Drogas
     int vida;
     public bool isPaused = false;
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     float movimento;
     bool isInFloor;
     float previousPositionY;
-
+    public static bool fase2 = false;
 
     Rigidbody2D physics;
     Animator animator;
@@ -38,8 +38,15 @@ public class Player : MonoBehaviour
     void LateUpdate(){
         float positionY = this.transform.position.y;
         float positionX = this.transform.position.x;
-        if (positionY < 0) positionY = 0;
-        if (positionX < 0) positionX = 0;
+        if (!fase2)
+        {
+            if (positionY < 0) positionY = 0;
+        }
+        else
+        {
+            if (positionY < -3.689f) positionY = -3.689f;
+        }
+        if (positionX < -1) positionX = -1;
 
         // CAMERA NORMAL
         Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
@@ -49,6 +56,11 @@ public class Player : MonoBehaviour
         if (!isPaused)
         {
             Movimentacao();
+        }
+        if (fase2 && !posFase2)
+        {
+            posFase2 = true;
+            this.transform.position = new Vector3(-1.77f, -4.12f, 0);
         }
         PlayerAnimation();
     }
