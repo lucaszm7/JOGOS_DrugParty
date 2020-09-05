@@ -5,12 +5,15 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
 	public static GameController instance;
+	public static AudioSource audioSource;
 	public static GameObject items;
-	static public int level = 1; 
-	static public int score = 0;
-	static public int time = 0;
+	public static int level = 1; 
+	public static int score = 0;
+	public static int time = 0;
+
 
 	void Awake(){
+		GameController.audioSource = GetComponent<AudioSource>();
 		GameController.items = GameObject.Find("ItemsColetaveis");
 		GameController.items.SetActive(false);
 		Debug.Log(GameObject.Find("ItemsColetaveis"));

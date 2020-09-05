@@ -10,6 +10,7 @@ public class CutsceneController : MonoBehaviour {
     internal string name;
 
     Texture2D RectangleTexture;
+    AudioSource audioSource;
     GameObject[] listOcultos;
     SpriteRenderer spriteRenderer;
     CutsceneObject _currentScene;
@@ -39,6 +40,7 @@ public class CutsceneController : MonoBehaviour {
     internal void Go(){
         GameController.StopTime();
         RectangleTexture = Resources.Load<Texture2D>("selection");
+        audioSource = GameObject.FindWithTag("Cutscene").GetComponent<AudioSource>();
         listOcultos = new GameObject[2];
         listOcultos[0] = GameObject.FindWithTag("Player");
         listOcultos[1] = GameObject.Find("PlayerCamera");
@@ -72,6 +74,7 @@ public class CutsceneController : MonoBehaviour {
     }
 
     public virtual void Finish(){
+        audioSource.Stop();
         GameController.StartTime();
         SwapPosition(false);
     }

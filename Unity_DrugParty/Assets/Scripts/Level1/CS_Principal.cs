@@ -10,8 +10,8 @@ public class CS_Principal : CutsceneController{
 		Go();
 	}
 
-	/*public override void Finish(){
-		GameController.StartTime();
+	public override void Finish(){
+		GameController.audioSource.Play();
 		base.Finish();
-	}*/
+	}
 }

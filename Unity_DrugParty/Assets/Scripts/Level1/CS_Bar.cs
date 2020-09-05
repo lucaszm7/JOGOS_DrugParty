@@ -5,8 +5,8 @@ using UnityEngine;
 public class CS_Bar : CutsceneController {
 
 	public override void Finish(){
-		Debug.Log("Finalizou");
 		GameController.items.SetActive(true);
+		GameObject.FindWithTag("Finish").GetComponent<BoxCollider2D>().enabled = true;
 		base.Finish();
 	} 
 }
