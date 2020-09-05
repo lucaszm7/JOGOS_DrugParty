@@ -110,7 +110,8 @@ public class Objeto : MonoBehaviour
                         cs = gameObject.AddComponent<CS_Bar>();
                         cs.SetName("Bar");
                         cs.Go();
-                        GameObject.Destroy(Interacao);
+                        //GameObject.Destroy();
+                        GetComponent<BoxCollider2D>().enabled = false;
                     break;
                 }
             }

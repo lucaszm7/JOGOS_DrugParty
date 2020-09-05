@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour {
 		GameController.audioSource = GetComponent<AudioSource>();
 		GameController.items = GameObject.Find("ItemsColetaveis");
 		GameController.items.SetActive(false);
-		Debug.Log(GameObject.Find("ItemsColetaveis"));
 		instance = this;
 	}
 

@@ -7,6 +7,7 @@ using UnityEngine;
 public class CS_Principal : CutsceneController{
 
 	void Start(){
+		Debug.Log("foi");
 		Go();
 	}
 
