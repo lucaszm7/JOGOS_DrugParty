@@ -9,7 +9,8 @@ public enum ObjectType{
     Nenhum,
     Saida,
     Escada,
-    Bar_Level1
+    Bar_Level1,
+    Bar_Level2
 }
 
 
@@ -26,8 +27,6 @@ public class Objeto : MonoBehaviour
     public bool Interagiu;
     bool foi = false;
     CutsceneController script;
-    CS_Bar cs;
-
     void Awake(){
         Interacao = new GameObject("Interacao: " + this.name);
         Interacao.SetActive(false);
@@ -70,31 +69,27 @@ public class Objeto : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Player"){
+            foi = false;
             Interacao.SetActive(true);
         }
     }
     void OnTriggerStay2D(Collider2D collision){
-        if(collision.gameObject.tag == "Player"){
-            Debug.Log(Input.GetKey("f"));
+        if(collision.gameObject.tag == "Player" && !foi){
             if(Input.GetKey("f")){
+                foi = true;
                  switch(type){
                     case ObjectType.Saida:
-                        LoadScene.Load("Level2");
-                        /*
-                        if(LevelController.levelCS == 1)
-                        {
-
-                            LevelController.levelCS += 1;
-                            //==============
-                            Debug.Log(LevelController.levelCS);
-                            //==============
-                            StartCoroutine(DestroiFilho());
-                            cs.SetName("Part2");
-                            cs.Go();
+                        if(GameController.level == 3){
+                            CS_Final cs_final = gameObject.AddComponent<CS_Final>();
+                            cs_final.SetName("Final");
+                            cs_final.Go();
+                        }else{
+                            GameController.level++;
+                            LoadScene.Load("Level"+GameController.level);
                         }
-                        Player.fase2 = true;*/
-                        break;
+                    break;
                     case ObjectType.Escada:
+                    /*
                         if (LevelController.levelCS == 2)
                         {
                             LevelController.levelCS += 1;
@@ -104,12 +99,12 @@ public class Objeto : MonoBehaviour
                             StartCoroutine(DestroiFilho());
                             cs.SetName("Part3");
                             cs.Go();
-                        }
+                        }*/
                         break;  
                     case ObjectType.Bar_Level1:
-                        cs = gameObject.AddComponent<CS_Bar>();
-                        cs.SetName("Bar");
-                        cs.Go();
+                        CS_Bar cs_bar = gameObject.AddComponent<CS_Bar>();
+                        cs_bar.SetName("Bar");
+                        cs_bar.Go();
                         //GameObject.Destroy();
                         GetComponent<BoxCollider2D>().enabled = false;
                     break;
@@ -120,6 +115,7 @@ public class Objeto : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision){
         if (collision.gameObject.tag == "Player"){
+            foi = false;
             StartCoroutine(DestroiFilho());
         }
     }

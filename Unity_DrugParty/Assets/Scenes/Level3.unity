@@ -315,7 +315,7 @@ Transform:
   m_LocalScale: {x: 1.2671, y: 1.2671, z: 1.2671}
   m_Children:
   - {fileID: 1572814908}
-  m_Father: {fileID: 451575697}
+  m_Father: {fileID: 810458401}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &412597405
@@ -441,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 451575697}
   m_Layer: 0
-  m_Name: ObjetosDoCenario
+  m_Name: ItemsColetaveis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,8 +457,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.513558, y: -3.0900865, z: -60.191055}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 412597404}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -820,7 +819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810458401}
   m_Layer: 0
-  m_Name: ItemsColetaveis
+  m_Name: ObjetosDoCenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,9 +833,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810458400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.061307, y: 0.025336366, z: -62.26465}
+  m_LocalPosition: {x: 4.513558, y: -3.0900865, z: -60.191055}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 412597404}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
