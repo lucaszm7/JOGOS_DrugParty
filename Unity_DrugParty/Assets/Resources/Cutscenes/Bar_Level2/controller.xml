@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<cutscenes>
+  <cutscene>
+    <id>32</id>
+    <type>Legend</type>
+    <title></title>
+    <text></text>
+  </cutscene>
+  <cutscene>
+    <id>33</id>
+    <type>Dialog</type>
+    <title>Malu</title>
+    <text>Tome jovem, se hidrate é importante.</text>
+  </cutscene>
+  <cutscene>
+    <id>34</id>
+    <type>Legend</type>
+    <title></title>
+    <text></text>
+  </cutscene>
+  <cutscene>
+    <id>35</id>
+    <type>Dialog</type>
+    <title>Malu</title>
+    <text>Já comeu alguma coisa ?</text>
+  </cutscene>
+  <cutscene>
+    <id>36</id>
+    <type>Dialog</type>
+    <title>Lucas</title>
+    <text>obrigado já comi sim, sabe eu acho que eu já estou começando a imaginar coisas… acho que a brisa bateu.</text>
+  </cutscene>
+  <cutscene>
+    <id>37</id>
+    <type>Legend</type>
+    <title></title>
+    <text></text>
+  </cutscene>
+  <cutscene>
+    <id>38</id>
+    <type>Legend</type>
+    <title></title>
+    <text></text>
+  </cutscene>
+  <cutscene>
+    <id>39</id>
+    <type>Legend</type>
+    <title></title>
+    <text></text>
+  </cutscene>
+  <cutscene>
+    <id>40</id>
+    <type>Dialog</type>
+    <title>Malu</title>
+    <text>Hei Lucas, quer um ?</text>
+  </cutscene>
+  <cutscene>
+    <id>41</id>
+    <type>Dialog</type>
+    <title>Lucas</title>
+    <text>Não sei.. o que é?</text>
+  </cutscene>
+  <cutscene>
+    <id>42</id>
+    <type>Dialog</type>
+    <title>Malu</title>
+    <text>É Doce,quer experimentar ? não precisa se quiser.</text>
+  </cutscene>
+  <cutscene>
+    <id>43</id>
+    <type>Dialog</type>
+    <title>Lucas</title>
+    <text>...eu topo.</text>
+  </cutscene>
+</cutscenes>	

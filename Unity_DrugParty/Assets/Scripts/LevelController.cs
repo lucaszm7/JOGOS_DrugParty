@@ -32,9 +32,6 @@ public class LevelController : MonoBehaviour
     void Awake(){ 
         this.imagemGameOver.SetActive(false);
         scriptPlayer = GameObject.FindWithTag("Player").GetComponent<Player>();
-        //==============
-        Debug.Log(levelCS);
-        //==============
     }
 
     IEnumerator AnimationCamera2(){
@@ -122,7 +119,7 @@ public class LevelController : MonoBehaviour
     }
 
     public static void Finish(){
-        LoadScene.Load("Level2");
+       // LoadScene.Load("Level2");
     }
 
     public void addItem(Item itemPass){

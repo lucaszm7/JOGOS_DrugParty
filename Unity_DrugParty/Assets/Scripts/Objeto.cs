@@ -10,7 +10,8 @@ public enum ObjectType{
     Saida,
     Escada,
     Bar_Level1,
-    Bar_Level2
+    Bar_Level2,
+    Balada
 }
 
 
@@ -27,6 +28,7 @@ public class Objeto : MonoBehaviour
     public bool Interagiu;
     bool foi = false;
     CutsceneController script;
+
     void Awake(){
         Interacao = new GameObject("Interacao: " + this.name);
         Interacao.SetActive(false);
@@ -39,74 +41,46 @@ public class Objeto : MonoBehaviour
         animatorRenderer.runtimeAnimatorController = InteracaoAnimator;
     }
 
-    void OnTrigger2Enter2D(Collider2D collision){
-        /*
-        if (collision.gameObject.tag == "Player" && Interacao == null)
-        {
-            if (this.name == "Saida" && LevelController.levelCS != 1)
-            {
-                return;
-            }
-            Colidiu = true;
-            Interacao = new GameObject("Interacao: " + this.name);
-            Interacao.SetActive(false);
-            Interacao.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z);
-            Interacao.transform.parent = this.transform;
-            SpriteRenderer spriteRenderer = Interacao.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = InteracaoImagem;
-            spriteRenderer.sortingOrder = 30;
-            Animator animatorRenderer = Interacao.AddComponent<Animator>();
-            animatorRenderer.runtimeAnimatorController = InteracaoAnimator;
-            
-            //StartCoroutine(DesestabilizaFilho());
-        }/*
-        else if (collision.gameObject.tag == "Player" && !foi)
-        {
-            Colidiu = true;
-            StartCoroutine(DesestabilizaFilho());
-        }*/
-    }
-
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Player"){
             foi = false;
             Interacao.SetActive(true);
         }
     }
+
     void OnTriggerStay2D(Collider2D collision){
         if(collision.gameObject.tag == "Player" && !foi){
             if(Input.GetKey("f")){
                 foi = true;
                  switch(type){
-                    case ObjectType.Saida:
-                        if(GameController.level == 3){
-                            CS_Final cs_final = gameObject.AddComponent<CS_Final>();
-                            cs_final.SetName("Final");
-                            cs_final.Go();
-                        }else{
-                            GameController.level++;
-                            LoadScene.Load("Level"+GameController.level);
-                        }
+                    case ObjectType.Saida:  
+                        LoadScene.Load("Level2");
+                        GameController.level++;
+                    break;
+                    case ObjectType.Balada:
+                        CS_Final cs_final = gameObject.AddComponent<CS_Final>();
+                        cs_final.SetName("Final");
+                        cs_final.Go();
+                        GameController.level = 1;
                     break;
                     case ObjectType.Escada:
-                    /*
-                        if (LevelController.levelCS == 2)
-                        {
-                            LevelController.levelCS += 1;
-                            //==============
-                            Debug.Log(LevelController.levelCS);
-                            //==============
-                            StartCoroutine(DestroiFilho());
-                            cs.SetName("Part3");
-                            cs.Go();
-                        }*/
-                        break;  
+                    
+                    break;  
                     case ObjectType.Bar_Level1:
-                        CS_Bar cs_bar = gameObject.AddComponent<CS_Bar>();
-                        cs_bar.SetName("Bar");
-                        cs_bar.Go();
+                        Level1.CS_Bar bar1 = gameObject.AddComponent<Level1.CS_Bar>();
+                        bar1.SetName("Bar_Level1");
+                        bar1.Go();
                         //GameObject.Destroy();
                         GetComponent<BoxCollider2D>().enabled = false;
+                    break;
+                    case ObjectType.Bar_Level2:
+                        LoadScene.Load("Level3");
+                        GameController.level++;
+                        /*Level2.CS_Bar bar2 = gameObject.AddComponent<Level2.CS_Bar>();
+                        bar2.SetName("Bar_Level2");
+                        bar2.Go();
+                        //GameObject.Destroy();
+                        GetComponent<BoxCollider2D>().enabled = false;*/
                     break;
                 }
             }

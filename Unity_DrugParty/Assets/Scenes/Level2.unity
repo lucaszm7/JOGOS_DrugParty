@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listCustscene: []
-  name: Begin
+  name: Outside
   TextinLine: 
   update: 1
 --- !u!4 &1846717329
