@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour{
+
     public float velocity;
-    [SerializeField]
-    float salto;
     public static bool bebado = false;
     public bool posFase2 = false;
     //Vida decai com o uso de Drogas
@@ -18,13 +16,14 @@ public class Player : MonoBehaviour
     float previousPositionY;
     public static bool fase2 = false;
 
+    [SerializeField]
+    float salto;
     Rigidbody2D physics;
     Animator animator;
     SpriteRenderer spriteRenderer;
 
     // Pega os componentes necessários quando o Player eh criado
     void Awake(){
-        Debug.Log("Ativou");
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -36,32 +35,26 @@ public class Player : MonoBehaviour
 
     // Movimentação da Camera
     void LateUpdate(){
-        float positionY = this.transform.position.y;
-        float positionX = this.transform.position.x;
-        if (!fase2)
-        {
-            if (positionY < 0) positionY = 0;
-        }
-        else
-        {
-            if (positionY < -3.689f) positionY = -3.689f;
-        }
-        if (positionX < -1) positionX = -1;
+        if(!isPaused){
+            Vector3 defaultPosition;
+            if(GameController.level == 3){
+                defaultPosition = new Vector3(-1.47f,-0.38f,0f);
+            }else{
+                defaultPosition = new Vector3(0f,0f,0f);
+            }
 
-        // CAMERA NORMAL
-        Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
+            float positionY = this.transform.position.y;
+            float positionX = this.transform.position.x;
+            if (positionY < 0) positionY = defaultPosition.y;
+            if (positionX < -1) positionX = defaultPosition.x;
+
+            // CAMERA NORMAL
+            Camera.main.transform.position = new Vector3(positionX, positionY, -10f);
+        }
     }
 
-    void Update(){
-        if (!isPaused)
-        {
-            Movimentacao();
-        }
-        if (fase2 && !posFase2)
-        {
-            posFase2 = true;
-            this.transform.position = new Vector3(19.43f, -4.12f, 0);
-        }
+    void FixedUpdate(){
+        if (!isPaused) Movimentacao();
         PlayerAnimation();
     }
 

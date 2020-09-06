@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 	public static GameController instance;
 	public static AudioSource audioSource;
 	public static GameObject items;
-	public static int level = 1; 
+	public static int level = 3; 
 	public static int score = 0;
 	public static int time = 0;
 
