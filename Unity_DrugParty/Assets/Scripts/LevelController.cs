@@ -123,6 +123,8 @@ public class LevelController : MonoBehaviour
     }
 
     public void addItem(Item itemPass){
+        GetComponent<GameController>().addItem(itemPass);
+        return;
         if (Itens.Contains(itemPass.name) == true)
         {
             return;
@@ -157,8 +159,7 @@ public class LevelController : MonoBehaviour
         spriteRenderer.sortingOrder = 30;
     }
 
-    void OnGUI()
-    {
+    void OnGUI(){
         if (isPaused)
             GUI.Label(new Rect(512, 200, 100, 50), " ===========\nGAME PAUSED\n ===========");
     }

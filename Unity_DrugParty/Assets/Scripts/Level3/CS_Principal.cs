@@ -15,6 +15,7 @@ namespace Level3{
 			GameController.audioSource.Play();
 			GameObject.FindWithTag("GameController").AddComponent<LevelController>();
 			base.Finish();
+			GameController.items.SetActive(true);
 		}
 	}
 }

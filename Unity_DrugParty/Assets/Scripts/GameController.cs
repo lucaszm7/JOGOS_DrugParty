@@ -11,6 +11,13 @@ public class GameController : MonoBehaviour {
 	public static int score = 0;
 	public static int time = 0;
 
+	HashSet<string> Itens = new HashSet<string>();
+
+	public Sprite bebida;
+    public Sprite doce;
+    public Sprite beck;
+    public Sprite agua;
+
 
 	void Awake(){
 		GameController.audioSource = GetComponent<AudioSource>();
@@ -53,6 +60,41 @@ public class GameController : MonoBehaviour {
 
         GUI.Label(new Rect(Camera.main.pixelWidth - 100, 10, 50, 20),timeString);
 
+    }
+
+     public void addItem(Item itemPass){
+        if (Itens.Contains(itemPass.name) == true)
+        {
+            return;
+        }
+    	float x = Camera.main.transform.position.x, y = Camera.main.transform.position.y;
+        x = x - 1.1f;
+        y = y + 1.1f;
+        float newItemx = 0.25f;
+        x += newItemx * Itens.Count;
+        Itens.Add(itemPass.name);
+
+        GameObject newItem = new GameObject("Item X: "+ x +" Y: "+ y);
+        newItem.transform.localPosition = new Vector3(x, y, 0);
+        newItem.transform.parent = GameObject.Find("PlayerCamera").transform;
+        newItem.transform.localScale = new Vector3(1,1,1);
+        SpriteRenderer spriteRenderer = newItem.AddComponent<SpriteRenderer>();
+        switch (itemPass.name)
+        {
+            case "Beck":
+                spriteRenderer.sprite = beck;
+                break;
+            case "Agua":
+                spriteRenderer.sprite = agua;
+                break;
+            case "Doce":
+                spriteRenderer.sprite = doce;
+                break;
+            case "Bebida":
+                spriteRenderer.sprite = bebida;
+                break;
+        }
+        spriteRenderer.sortingOrder = 30;
     }
 
 }
