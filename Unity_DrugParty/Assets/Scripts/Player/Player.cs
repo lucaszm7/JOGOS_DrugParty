@@ -54,7 +54,7 @@ public class Player : MonoBehaviour{
         }
     }
 
-    void FixedUpdate(){
+    void Update(){
         if (!isPaused) Movimentacao();
         PlayerAnimation();
     }
