@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour{
 
     public float velocity;
+    public float salto;
     public static bool bebado = false;
     public bool posFase2 = false;
     //Vida decai com o uso de Drogas
@@ -16,8 +17,6 @@ public class Player : MonoBehaviour{
     float previousPositionY;
     public static bool fase2 = false;
 
-    [SerializeField]
-    float salto;
     Rigidbody2D physics;
     Animator animator;
     SpriteRenderer spriteRenderer;
@@ -37,16 +36,18 @@ public class Player : MonoBehaviour{
     void LateUpdate(){
         if(!isPaused){
             Vector3 defaultPosition;
-            if(GameController.level == 3){
-                defaultPosition = new Vector3(-1.47f,-0.38f,0f);
+            float positionX = this.transform.position.x;
+            float positionY = this.transform.position.y;
+    
+            if(GameController.level == 3 || Level3.LevelController.PlayerMiny){
+                defaultPosition = new Vector3(0f,-0.37f,0f);
+                if (positionY < -0.4f) positionY = defaultPosition.y;
             }else{
                 defaultPosition = new Vector3(0f,0f,0f);
+                if (positionY < 0) positionY = defaultPosition.y;
             }
 
-            float positionY = this.transform.position.y;
-            float positionX = this.transform.position.x;
-            if (positionY < 0) positionY = defaultPosition.y;
-            if (positionX < -1) positionX = defaultPosition.x;
+            if (positionX < 0) positionX = defaultPosition.x;
 
             // CAMERA NORMAL
             Camera.main.transform.position = new Vector3(positionX, positionY, -10f);

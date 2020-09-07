@@ -8,6 +8,7 @@ namespace Level3{
 
 		void Start(){
 			Go();
+			//Finish();
 		}
 
 		public override void Finish(){
