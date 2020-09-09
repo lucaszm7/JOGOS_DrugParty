@@ -21,8 +21,8 @@ public class Item : MonoBehaviour{
                     Player.chapado = false;
                     break;
                 case "Doce":
-
-                    break;
+                    Player.drogado = true;
+                break;
             }
             Destroy(gameObject);
     	}

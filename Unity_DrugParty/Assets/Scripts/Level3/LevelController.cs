@@ -20,7 +20,7 @@ namespace Level3{
 			ScriptPlayer = Player.GetComponent<Player>();
 			ScriptPlayer.isPaused = true;
 			ScriptPlayer.velocity = 2f;
-			ScriptPlayer.salto = 1.95f;
+			ScriptPlayer.salto = 1.6f;
 			LevelController.PlayerMiny = true;
 	        StartCoroutine(TransformPlayer());
 	    }

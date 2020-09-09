@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour{
 
+    public Transform groundCheck;
+    public LayerMask whatIsGround;
     public float velocity;
     public float salto;
     public static bool bebado = false;
     public static bool chapado = false;
+    public static bool drogado = false;
     public static bool posFase2 = false;
     //Vida decai com o uso de Drogas
     int vida;
@@ -65,7 +68,8 @@ public class Player : MonoBehaviour{
         if(physics.velocity.y > 0f){
             previousPositionY = transform.position.y;    
         }
-
+        isInFloor = PlayerJump.isJump;
+        //isInFloor = Physics2D.Linecast(transform.position,groundCheck.position,whatIsGround);
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
             if (this.isInFloor){
@@ -77,7 +81,7 @@ public class Player : MonoBehaviour{
                 {
                     this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 }
-                this.isInFloor = false;
+                PlayerJump.isJump = false;
             }
         }
 
@@ -115,7 +119,7 @@ public class Player : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         switch(collision.gameObject.tag){
             case "Floor":
-                isInFloor = true;
+            //    isInFloor = true;
             break;
         }
     }
