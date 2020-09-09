@@ -12,13 +12,17 @@ public class Item : MonoBehaviour{
             switch(this.name){
                 case "Bebida":
                     Player.bebado = true;
-                break;
+                    break;
+                case "Beck":
+                    Player.chapado = true;
+                    break;
                 case "Agua":
                     Player.bebado = false;
-                break;
+                    Player.chapado = false;
+                    break;
                 case "Doce":
 
-                break;
+                    break;
             }
             Destroy(gameObject);
     	}

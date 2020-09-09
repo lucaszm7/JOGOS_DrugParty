@@ -7,7 +7,8 @@ public class Player : MonoBehaviour{
     public float velocity;
     public float salto;
     public static bool bebado = false;
-    public bool posFase2 = false;
+    public static bool chapado = false;
+    public static bool posFase2 = false;
     //Vida decai com o uso de Drogas
     int vida;
     public bool isPaused = false;
@@ -68,7 +69,14 @@ public class Player : MonoBehaviour{
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
             if (this.isInFloor){
-                this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
+                if (Player.chapado)
+                {
+                    this.physics.AddForce(Vector3.up * velocity * salto * 0.9f, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
+                }
                 this.isInFloor = false;
             }
         }
@@ -76,7 +84,14 @@ public class Player : MonoBehaviour{
         // MOVIMENTO HORIZONTAL
         movimento = Input.GetAxis("Horizontal");
         // Teste de Velocidade com o Metod antigo |
-        physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+        if (Player.chapado)
+        {
+            physics.velocity = new Vector2(movimento * velocity/2, physics.velocity.y);
+        }
+        else
+        {
+            physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+        }
 
         if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
 

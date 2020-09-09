@@ -53,7 +53,7 @@ public class Objeto : MonoBehaviour
             if(Input.GetKey("f")){
                 foi = true;
                  switch(type){
-                    case ObjectType.Saida:  
+                    case ObjectType.Saida:
                         LoadScene.Load("Level2");
                         GameController.level++;
                     break;
