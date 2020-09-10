@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour{
 
-    public Transform groundCheck;
-    public LayerMask whatIsGround;
+    public LayerMask layer;
+
     public float velocity;
     public float salto;
     public static bool bebado = false;
@@ -17,13 +17,16 @@ public class Player : MonoBehaviour{
     public bool isPaused = false;
 
     float movimento;
-    bool isInFloor;
+    public bool isInFloor;
     float previousPositionY;
     public static bool fase2 = false;
 
     Rigidbody2D physics;
     Animator animator;
     SpriteRenderer spriteRenderer;
+
+    public GameObject object1;
+    public GameObject object2;
 
     // Pega os componentes necessários quando o Player eh criado
     void Awake(){
@@ -58,7 +61,7 @@ public class Player : MonoBehaviour{
         }
     }
 
-    void Update(){
+    void FixedUpdate(){
         if (!isPaused) Movimentacao();
         PlayerAnimation();
     }
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour{
         if(physics.velocity.y > 0f){
             previousPositionY = transform.position.y;    
         }
-        isInFloor = PlayerJump.isJump;
+       // isInFloor = PlayerJump.isJump;
         //isInFloor = Physics2D.Linecast(transform.position,groundCheck.position,whatIsGround);
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
@@ -81,12 +84,32 @@ public class Player : MonoBehaviour{
                 {
                     this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 }
-                PlayerJump.isJump = false;
+                this.isInFloor = false;
             }
         }
 
-        // MOVIMENTO HORIZONTAL
         movimento = Input.GetAxis("Horizontal");
+
+        Vector2 nextPosition = new Vector2(transform.position.x,transform.position.y);
+        if(movimento > 0){
+            nextPosition += new Vector2(0.1f,0f);
+        }else if(movimento < 0){
+            nextPosition -= new Vector2(0.1f,0f);
+        }
+        Vector2 currentPosition = new Vector2(transform.position.x,transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(nextPosition,currentPosition,0.01f,layer);
+        bool isCollider = false;
+        bool isRight = false;
+        if(hit.collider != null){
+            isCollider = true;
+            if(movimento > 0) isRight = true;
+            Debug.Log(hit.collider.name+" - "+hit.collider.tag);
+        }else{
+           Debug.Log("-");
+        }
+        //if(movimento != 0) object1.transform.localPosition = nextPosition;
+
+        // MOVIMENTO HORIZONTAL
         // Teste de Velocidade com o Metod antigo |
         if (Player.chapado)
         {
@@ -94,7 +117,9 @@ public class Player : MonoBehaviour{
         }
         else
         {
-            physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+            if(!isCollider || (movimento < 0 && isRight || movimento > 0 && !isRight)){
+                physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
+            }
         }
 
         if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
@@ -119,7 +144,7 @@ public class Player : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         switch(collision.gameObject.tag){
             case "Floor":
-            //    isInFloor = true;
+                isInFloor = true;
             break;
         }
     }

@@ -22,6 +22,7 @@ namespace Level3{
 			ScriptPlayer.velocity = 2f;
 			ScriptPlayer.salto = 1.6f;
 			LevelController.PlayerMiny = true;
+			PlayerLife.SetHP(-6);
 	        StartCoroutine(TransformPlayer());
 	    }
 

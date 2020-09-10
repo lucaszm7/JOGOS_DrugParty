@@ -11,16 +11,20 @@ public class Item : MonoBehaviour{
 
             switch(this.name){
                 case "Bebida":
+                    PlayerLife.SetHP(-2);
                     Player.bebado = true;
                     break;
                 case "Beck":
+                    PlayerLife.SetHP(-2);
                     Player.chapado = true;
                     break;
                 case "Agua":
+                    PlayerLife.SetHP(2);
                     Player.bebado = false;
                     Player.chapado = false;
                     break;
                 case "Doce":
+                    PlayerLife.SetHP(-2);
                     Player.drogado = true;
                 break;
             }
