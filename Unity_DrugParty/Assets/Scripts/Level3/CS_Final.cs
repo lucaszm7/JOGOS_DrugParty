@@ -26,12 +26,7 @@ public class CS_Final : CutsceneController{
 	internal override void Step(){
 		base.Step();
 		if(_currentScene.Id == 74){
-			Debug.Log("Mudou");
 			GameObject.Find("MusicFinal").GetComponent<AudioSource>().Play();
-			/*
-			AudioSource audio = GameObject.FindWithTag("Cutscene").GetComponent<AudioSource>();
-			audio.clip = Resources.Load<AudioClip>("proerd");
-			audio.Play();*/
 		}
 	}
 }
