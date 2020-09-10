@@ -32,12 +32,12 @@ public class PlayerLife : MonoBehaviour{
 
     public static void SetHP(int HP){
     	if(HP > maxHP) HP = maxHP;
+    	Debug.Log("SET" + HP);
     	currentHP += HP;
     	if(currentHP < 0) currentHP = 0;
-    	if(currentHP > 0){
-    	}else{
-    		Debug.Log("Morreu");
-
+    	if(currentHP == 0){
+    		Debug.Log("MORREU");
+    		GameObject.FindWithTag("Player").GetComponent<Player>().PlayerDead();
     	}
     }
 

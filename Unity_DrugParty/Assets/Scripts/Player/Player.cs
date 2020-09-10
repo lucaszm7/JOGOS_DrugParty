@@ -61,9 +61,15 @@ public class Player : MonoBehaviour{
         }
     }
 
-    void FixedUpdate(){
+    void Update(){
         if (!isPaused) Movimentacao();
         PlayerAnimation();
+    }
+
+    public void PlayerDead(){
+        PlayerLife.SetHP(100);
+        LoadScene.Load("Level3");
+        //transform.localPosition = new Vector3(0f,0.58f,0f);    
     }
 
     void Movimentacao()
@@ -71,7 +77,7 @@ public class Player : MonoBehaviour{
         if(physics.velocity.y > 0f){
             previousPositionY = transform.position.y;    
         }
-       // isInFloor = PlayerJump.isJump;
+        isInFloor = PlayerJump.isJump;
         //isInFloor = Physics2D.Linecast(transform.position,groundCheck.position,whatIsGround);
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
@@ -84,7 +90,7 @@ public class Player : MonoBehaviour{
                 {
                     this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 }
-                this.isInFloor = false;
+                PlayerJump.isJump = false;
             }
         }
 
@@ -99,17 +105,11 @@ public class Player : MonoBehaviour{
         Vector2 currentPosition = new Vector2(transform.position.x,transform.position.y);
         RaycastHit2D hit = Physics2D.Raycast(nextPosition,currentPosition,0.01f,layer);
         bool isCollider = false;
-        bool isRight = false;
         if(hit.collider != null){
             isCollider = true;
-            if(movimento > 0) isRight = true;
-            Debug.Log(hit.collider.name+" - "+hit.collider.tag);
-        }else{
-           Debug.Log("-");
         }
-        //if(movimento != 0) object1.transform.localPosition = nextPosition;
 
-        // MOVIMENTO HORIZONTAL
+        // MOVIMENTO HORIZONTAL || (movimento < 0 && isRight || movimento > 0 && !isRight)
         // Teste de Velocidade com o Metod antigo |
         if (Player.chapado)
         {
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour{
         }
         else
         {
-            if(!isCollider || (movimento < 0 && isRight || movimento > 0 && !isRight)){
+            if(!isCollider){
                 physics.velocity = new Vector2( movimento * velocity, physics.velocity.y);
             }
         }
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         switch(collision.gameObject.tag){
             case "Floor":
-                isInFloor = true;
+           //     isInFloor = true;
             break;
         }
     }
