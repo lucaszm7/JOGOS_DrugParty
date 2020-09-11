@@ -27,8 +27,6 @@ public class Player : MonoBehaviour{
     Animator animator;
     SpriteRenderer spriteRenderer;
 
-    public GameObject object1;
-    public GameObject object2;
 
     // Pega os componentes necessários quando o Player eh criado
     void Awake(){
@@ -97,13 +95,17 @@ public class Player : MonoBehaviour{
         if(physics.velocity.y > 0f){
             previousPositionY = transform.position.y;    
         }
-        //isInFloor = PlayerJump.isJump;
+        if (!Player.chapado) isInFloor = PlayerJump.isJump;
         //isInFloor = Physics2D.Linecast(transform.position,groundCheck.position,whatIsGround);
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
             if (this.isInFloor){
                 this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
-                isInFloor = false;
+                if (Player.chapado){
+                    isInFloor = false;
+                }else{
+                    PlayerJump.isJump = false;
+                }
             }
         }
 
@@ -116,11 +118,12 @@ public class Player : MonoBehaviour{
             nextPosition -= new Vector2(0.1f,0f);
         }
         Vector2 currentPosition = new Vector2(transform.position.x,transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(nextPosition,currentPosition,0.01f,layer);
+        RaycastHit2D hit = Physics2D.Raycast(nextPosition,currentPosition,0.04f,layer);
         bool isCollider = false;
         if(hit.collider != null){
             isCollider = true;
         }
+
 
         // MOVIMENTO HORIZONTAL || (movimento < 0 && isRight || movimento > 0 && !isRight)
         // Teste de Velocidade com o Metod antigo |
@@ -171,9 +174,9 @@ public class Player : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         switch(collision.gameObject.tag){
             case "Floor":
-                isInFloor = true;
                 if (Player.chapado)
                 {
+                isInFloor = true;
                     PlayerLife.SetHP(-3);
                 }
                 break;

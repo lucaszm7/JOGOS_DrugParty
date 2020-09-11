@@ -1215,7 +1215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324743452}
   - component: {fileID: 324743453}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2785,10 +2785,10 @@ MonoBehaviour:
     m_Bits: 256
   velocity: 3
   salto: 0
+  forceChapado: 0
+  posicaoInicial: {x: 0, y: 0, z: 0}
   isPaused: 0
   isInFloor: 0
-  object1: {fileID: 1151074096}
-  object2: {fileID: 0}
 --- !u!95 &630999535
 Animator:
   serializedVersion: 3
