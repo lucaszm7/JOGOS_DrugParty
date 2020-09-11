@@ -148,7 +148,7 @@ public class CutsceneController : MonoBehaviour {
             gui.height -= 20;
             GUILayout.BeginArea(gui);
             GUIStyle style = new GUIStyle();
-            style.fontSize = 15;
+            style.fontSize = 24;
             style.normal.textColor = Color.white;
             style.wordWrap = true;
             GUILayout.Label(TextinLine,style);

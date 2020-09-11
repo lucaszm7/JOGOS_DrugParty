@@ -14,9 +14,11 @@
   </cutscene>
   <cutscene>
     <id>13</id>
-    <type>Legend</type>
-    <title>Cleber Acena</title>
-    <text></text>
+    <type>Dialog</type>
+    <title>Cleber</title>
+    <text>
+      HEY MALU!!!
+    </text>
   </cutscene>
   <cutscene>
     <id>14</id>
@@ -28,19 +30,25 @@
     <id>15</id>
     <type>Dialog</type>
     <title>Malu</title>
-    <text>Eae galera, como vao? ja faz um tempo que ces nao colam por aqui</text>
+    <text>
+      Eae galera, como vao? ja faz um tempo que ces nao colam por aqui
+    </text>
   </cutscene>
   <cutscene>
     <id>16</id>
     <type>Dialog</type>
     <title>Malu</title>
-    <text>!..hmmm quem e esse que eu nunca vi?</text>
+    <text>
+      !..hmmm quem e esse que eu nunca vi?
+    </text>
   </cutscene>
   <cutscene>
     <id>17</id>
     <type>Dialog</type>
     <title>Cleber</title>
-    <text>Esse aqui eh o Marthow, ele ta fazendo 18 anos essa noite.</text>
+    <text>
+      Esse aqui eh o Marthow, ele ta fazendo 18 anos essa noite.
+    </text>
   </cutscene>
   <cutscene>
     <id>18</id>
@@ -70,13 +78,17 @@
     <id>22</id>
     <type>Dialog</type>
     <title>Malu</title>
-    <text>Prazer Marthow, eu sou Maria Luiza, mas pode me chamar de Malu.</text>
+    <text>
+      Prazer Marthow, eu sou Maria Luiza, mas pode me chamar de Malu.
+    </text>
   </cutscene>
   <cutscene>
     <id>23</id>
     <type>Dialog</type>
     <title>Marthow</title>
-    <text>Prazer, igualmente..</text>
+    <text>
+      Prazer, igualmente...
+    </text>
   </cutscene>
   <cutscene>
     <id>24</id>
@@ -106,7 +118,9 @@
     <id>28</id>
     <type>Dialog</type>
     <title>Malu</title>
-    <text>Eh a sua primeira vez?</text>
+    <text>
+      Eh a sua primeira vez?
+    </text>
   </cutscene>
   <cutscene>
     <id>29</id>
@@ -120,13 +134,17 @@
     <id>30</id>
     <type>Dialog</type>
     <title>Malu</title>
-    <text>Isso vai ser divertido você vai sentir os efeitos muito rápido.</text>
+    <text>
+      Isso vai ser divertido você vai sentir os efeitos muito rapido.
+    </text>
   </cutscene>
   <cutscene>
     <id>31</id>
     <type>Dialog</type>
     <title>Ricardinho</title>
-    <text>Hei galera vamos voltar pra dentro.</text>
+    <text>
+      Hei galera vamos voltar pra dentro.
+    </text>
   </cutscene>
   <cutscene>
     <id>32</id>

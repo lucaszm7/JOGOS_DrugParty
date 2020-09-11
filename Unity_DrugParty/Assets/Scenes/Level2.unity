@@ -2867,7 +2867,7 @@ MonoBehaviour:
   manualInstrucoes: {fileID: 5214679412773337570, guid: ebb07308019bf1441aafa49d6a46e549,
     type: 3}
   timeGenerate: 3
-  range: 0.3
+  range: 0.5
   nObstaculos: 0
   agua: {fileID: 1235625877}
 --- !u!4 &1158195774
