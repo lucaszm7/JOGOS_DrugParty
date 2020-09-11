@@ -43,7 +43,6 @@ public class Player : MonoBehaviour{
         this.salto = 1.3f;
         this.posicaoInicial = transform.position;
      //   this.bebado = false;
-        PlayerLife.SetHP(100);
     }
 
     // Movimentação da Camera

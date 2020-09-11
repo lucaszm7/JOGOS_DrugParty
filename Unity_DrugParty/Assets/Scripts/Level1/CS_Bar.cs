@@ -8,6 +8,7 @@ namespace Level1{
 		public override void Finish(){
 			GameController.items.SetActive(true);
 			GameObject.FindWithTag("Finish").GetComponent<BoxCollider2D>().enabled = true;
+			GameController.audioSource.Play();
 			base.Finish();
 		} 
 	}
