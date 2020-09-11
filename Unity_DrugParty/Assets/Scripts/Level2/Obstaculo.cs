@@ -6,7 +6,7 @@ using UnityEngine;
 public class Obstaculo : MonoBehaviour
 {
     [SerializeField]
-    private float velocity = 0.5f;
+    private float velocity = 0.7f;
     private Vector3 posicaoPlayer;
     private bool pontuei = false;
     void OnTriggerEnter2D(Collider2D ObjetoColidido)
