@@ -20,10 +20,6 @@ public class GeradorObstaculos : MonoBehaviour
     private Vector3 altura = new Vector3();
     private float cronometer;
 
-    [SerializeField]
-    private GameObject paredeCima;
-    [SerializeField]
-    private GameObject paredeBaixo;
     public static int ObsDestroy = 0;
 
     void Awake()
@@ -55,17 +51,11 @@ public class GeradorObstaculos : MonoBehaviour
             if (nObstaculos == 10)
             {
                 agua.SetActive(true);
-                altura.x += 17f;
+                altura.x += 17.5f;
                 agua.transform.position = altura;
             }
             this.cronometer = this.timeGenerate;
         }
-        if (ObsDestroy >= 10)
-        {
-            paredeBaixo.SetActive(false);
-            paredeCima.SetActive(false);
-        }
-
     }
 }
 
