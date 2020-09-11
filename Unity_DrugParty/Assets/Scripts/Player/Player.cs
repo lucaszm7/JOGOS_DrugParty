@@ -10,8 +10,10 @@ public class Player : MonoBehaviour{
     public float salto;
     public static bool bebado = false;
     public static bool chapado = false;
+    [SerializeField]
+    private float forceChapado;
     public static bool drogado = false;
-    public static bool posFase2 = false;
+    public Vector3 posicaoInicial;
     //Vida decai com o uso de Drogas
     int vida;
     public bool isPaused = false;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour{
         this.velocity = 3;
         this.isInFloor = true;
         this.salto = 1.3f;
+        this.posicaoInicial = transform.position;
      //   this.bebado = false;
     }
 
@@ -62,13 +65,30 @@ public class Player : MonoBehaviour{
     }
 
     void Update(){
-        if (!isPaused) Movimentacao();
+        if (!isPaused && !Player.chapado) Movimentacao();
+        if (Player.chapado)
+        {
+            movimentacaoChapado();
+        }
         PlayerAnimation();
     }
 
     public void PlayerDead(){
-        PlayerLife.SetHP(100);
-        LoadScene.Load("Level3");
+        
+        transform.position = posicaoInicial;
+        //Player.drogado = false;
+
+        if (Player.chapado)
+        {
+            Player.chapado = false;
+            PlayerLife.SetHP(100);
+            LoadScene.Load("Level2");
+        }
+        else
+        {
+            PlayerLife.SetHP(100);
+            LoadScene.Load("Level3");
+        }
         //transform.localPosition = new Vector3(0f,0.58f,0f);    
     }
 
@@ -77,20 +97,13 @@ public class Player : MonoBehaviour{
         if(physics.velocity.y > 0f){
             previousPositionY = transform.position.y;    
         }
-        isInFloor = PlayerJump.isJump;
+        //isInFloor = PlayerJump.isJump;
         //isInFloor = Physics2D.Linecast(transform.position,groundCheck.position,whatIsGround);
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
             if (this.isInFloor){
-                if (Player.chapado)
-                {
-                    this.physics.AddForce(Vector3.up * velocity * salto * 0.9f, ForceMode2D.Impulse);
-                }
-                else
-                {
-                    this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
-                }
-                PlayerJump.isJump = false;
+                this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
+                isInFloor = false;
             }
         }
 
@@ -126,6 +139,20 @@ public class Player : MonoBehaviour{
 
     }
 
+    private void movimentacaoChapado()
+    {
+        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
+        {
+            this.Impulse();
+        }
+        if (movimento > 0 && spriteRenderer.flipX == true || movimento < 0 && spriteRenderer.flipX == false) Flip();
+    }
+    public void Impulse()
+    {
+        this.physics.velocity = Vector2.zero;
+        this.physics.AddForce(Vector2.up * this.forceChapado, ForceMode2D.Impulse);
+    }
+
     // Animações do Player
     void PlayerAnimation(){
 
@@ -144,8 +171,18 @@ public class Player : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         switch(collision.gameObject.tag){
             case "Floor":
-           //     isInFloor = true;
-            break;
+                isInFloor = true;
+                if (Player.chapado)
+                {
+                    PlayerLife.SetHP(-4);
+                }
+                break;
+            case "Obstaculo":
+                if (Player.chapado)
+                {
+                    PlayerLife.SetHP(-4);
+                }
+                break;
         }
     }
 }

@@ -4,9 +4,29 @@ using UnityEngine;
 
 public class Carrousel : MonoBehaviour
 {
-    // Update is called once per frame
+    Vector3 posicaoInicial;
+    void Awake()
+    {
+        posicaoInicial = this.transform.position;
+    }
+
+    public void Reiniciar()
+    {
+        this.transform.position = posicaoInicial;
+    }
+
     void Update()
     {
-        
+        if (Player.chapado)
+        {
+            if(this.tag == "Fundo")
+            {
+                this.transform.Translate(Vector3.right * 0.1f * Time.deltaTime);
+            }
+            else
+            {
+                this.transform.Translate(Vector3.right * 0.3f * Time.deltaTime);
+            }
+        }
     }
 }

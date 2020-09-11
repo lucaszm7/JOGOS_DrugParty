@@ -38,7 +38,8 @@ public class PlayerLife : MonoBehaviour{
     	if(currentHP == 0){
     		Debug.Log("MORREU");
     		GameObject.FindWithTag("Player").GetComponent<Player>().PlayerDead();
-    	}
+            GameObject.FindWithTag("GameController").GetComponent<LevelController>().Reiniciar();
+        }
     }
 
 }

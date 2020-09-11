@@ -22,9 +22,19 @@ public class LevelController : MonoBehaviour
     GameObject imagemGameOver;
     [SerializeField]
     Player scriptPlayer;
-
     [SerializeField]
     Camera mainCamera;
+
+    [SerializeField]
+    GameObject ObjetosCenario;
+    [SerializeField]
+    GameObject Cena;
+    [SerializeField]
+    GameObject GeradorObstaculos;
+    [SerializeField]
+    GameObject aguaPos;
+    [SerializeField]
+    GameObject bebidaPos;
 
     bool actived = false;
     float i = 0;
@@ -118,8 +128,11 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public static void Finish(){
-       // LoadScene.Load("Level2");
+    public void Reiniciar(){
+        Cena.GetComponent<Carrousel>().Reiniciar();
+        ObjetosCenario.GetComponent<Carrousel>().Reiniciar();
+        aguaPos.GetComponent<Item>().Reiniciar();
+        bebidaPos.GetComponent<Item>().Reiniciar();
     }
 
     public void addItem(Item itemPass){

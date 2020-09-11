@@ -8,6 +8,8 @@ TagManager:
   - Floor
   - Escada
   - Cutscene
+  - Fundo
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
