@@ -147,7 +147,11 @@ public class CutsceneController : MonoBehaviour {
             gui.y += 10;
             gui.height -= 20;
             GUILayout.BeginArea(gui);
-            GUILayout.Label(TextinLine);
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 15;
+            style.normal.textColor = Color.white;
+            style.wordWrap = true;
+            GUILayout.Label(TextinLine,style);
             GUILayout.EndArea();
         }
     }
