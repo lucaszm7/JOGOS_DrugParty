@@ -24,8 +24,9 @@ public class Item : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
     	if(collision.gameObject.tag == "Player"){
     		GameObject.FindWithTag("GameController").GetComponent<GameController>().addItem(this);
-            gameObject.SetActive(false);
-
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+    
             switch(this.name){
                 case "Bebida":
                     PlayerLife.SetHP(-2);
@@ -48,7 +49,19 @@ public class Item : MonoBehaviour{
                     Player.drogado = true;
                 break;
             }
-            Destroy(gameObject);
+            StartCoroutine(SoundAndDestroy());
     	}
+    }
+
+    IEnumerator SoundAndDestroy(){
+        SoundItem();
+        yield return new WaitForSeconds(0.245f);
+        gameObject.SetActive(false);
+    }
+
+    void SoundItem(){
+        AudioSource source = gameObject.AddComponent<AudioSource>();
+        source.clip = Resources.Load<AudioClip>("pegar");
+        source.Play();
     }
 }

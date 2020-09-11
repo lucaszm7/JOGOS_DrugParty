@@ -27,8 +27,8 @@
   <cutscene>
     <id>36</id>
     <type>Dialog</type>
-    <title>Lucas</title>
-    <text>obrigado já comi sim, sabe eu acho que eu já estou começando a imaginar coisas… acho que a brisa bateu.</text>
+    <title>Marthow</title>
+    <text>Obrigado já comi sim, sabe eu acho que eu já estou começando a imaginar coisas… acho que a brisa bateu.</text>
   </cutscene>
   <cutscene>
     <id>37</id>
@@ -52,12 +52,12 @@
     <id>40</id>
     <type>Dialog</type>
     <title>Malu</title>
-    <text>Hei Lucas, quer um ?</text>
+    <text>Hei Marthow, quer um ?</text>
   </cutscene>
   <cutscene>
     <id>41</id>
     <type>Dialog</type>
-    <title>Lucas</title>
+    <title>Marthow</title>
     <text>Não sei.. o que é?</text>
   </cutscene>
   <cutscene>
@@ -69,7 +69,7 @@
   <cutscene>
     <id>43</id>
     <type>Dialog</type>
-    <title>Lucas</title>
+    <title>Marthow</title>
     <text>...eu topo.</text>
   </cutscene>
 </cutscenes>	
