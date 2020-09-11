@@ -9,7 +9,7 @@
 	<cutscene>
 		<id>45</id>
 		<type>Dialog</type>
-		<title>Lucas</title>
+		<title>Marthow</title>
 		<text>Me sinto incrivel.</text>
 	</cutscene>
 	<cutscene>
@@ -21,7 +21,7 @@
 	<cutscene>
 		<id>47</id>
 		<type>Dialog</type>
-		<title>Lucas</title>
+		<title>Marthow</title>
 		<text>Falta uma coisa só.</text>
 	</cutscene>
 	<cutscene>
@@ -75,7 +75,7 @@
 	<cutscene>
 		<id>56</id>
 		<type>Dialog</type>
-		<title>Lucas</title>
+		<title>Marthow</title>
 		<text>Claro</text>
 	</cutscene>
 	<cutscene>
@@ -105,7 +105,7 @@
 	<cutscene>
 		<id>61</id>
 		<type>Dialog</type>
-		<title>Amigo 1</title>
+		<title>Cléber</title>
 		<text>Eaeee galera! finalmente nos achamos de novo.</text>
 	</cutscene>
 	<cutscene>
@@ -117,19 +117,19 @@
 	<cutscene>
 		<id>63</id>
 		<type>Dialog</type>
-		<title>Amigo 2</title>
+		<title>Ricardinho</title>
 		<text>Que papo é esse? a gente que teve que dar espaço pros pombinhos.</text>
 	</cutscene>
 	<cutscene>
 		<id>64</id>
 		<type>Dialog</type>
-		<title>Amigo 1</title>
+		<title>Cléber</title>
 		<text>Ouch!</text>
 	</cutscene>
 	<cutscene>
 		<id>65</id>
 		<type>Dialog</type>
-		<title>Lucas</title>
+		<title>Marthow</title>
 		<text>Nossa pelo estado de vocês nem parece que a gente tava no mesmo rolê.</text>
 	</cutscene>
 	<cutscene>
@@ -141,7 +141,7 @@
 	<cutscene>
 		<id>67</id>
 		<type>Dialog</type>
-		<title>Lucas</title>
+		<title>Marthow</title>
 		<text>Pode crê, acho que já vou indo, então..te mando mensagem quando chegar em casa ?</text>
 	</cutscene>
 	<cutscene>
@@ -171,13 +171,13 @@
 	<cutscene>
 		<id>72</id>
 		<type>Dialog</type>
-		<title>Amigo 1</title>
+		<title>Cléber</title>
 		<text>EAE lukão, bora rachar um uber que eu to só o pó.</text>
 	</cutscene>
 	<cutscene>
 		<id>73</id>
 		<type>Dialog</type>
-		<title>Lucas</title>
+		<title>Marthow</title>
 		<text>Bora</text>
 	</cutscene>
 	<cutscene>
@@ -248,6 +248,12 @@
 	</cutscene>
 	<cutscene>
 		<id>85</id>
+		<type>Legend</type>
+		<title></title>
+		<text></text>
+	</cutscene>
+	<cutscene>
+		<id>86</id>
 		<type>Legend</type>
 		<title></title>
 		<text></text>
