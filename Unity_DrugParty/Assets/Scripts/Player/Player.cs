@@ -174,13 +174,13 @@ public class Player : MonoBehaviour{
                 isInFloor = true;
                 if (Player.chapado)
                 {
-                    PlayerLife.SetHP(-4);
+                    PlayerLife.SetHP(-3);
                 }
                 break;
             case "Obstaculo":
                 if (Player.chapado)
                 {
-                    PlayerLife.SetHP(-4);
+                    PlayerLife.SetHP(-3);
                 }
                 break;
         }
