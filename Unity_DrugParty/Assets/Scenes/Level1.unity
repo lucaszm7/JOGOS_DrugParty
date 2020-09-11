@@ -2057,6 +2057,11 @@ MonoBehaviour:
     type: 3}
   scriptPlayer: {fileID: 1525424586}
   mainCamera: {fileID: 1543841583}
+  ObjetosCenario: {fileID: 0}
+  Cena: {fileID: 0}
+  GeradorObstaculos: {fileID: 0}
+  aguaPos: {fileID: 0}
+  bebidaPos: {fileID: 0}
 --- !u!4 &696729374
 Transform:
   m_ObjectHideFlags: 0
@@ -2100,7 +2105,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f6c22c9f023308140895a9a0ea36200f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.482
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3383,7 +3388,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 10ed001f8bcede047aebcc1a80518b30, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.491
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3969,6 +3974,7 @@ GameObject:
   - component: {fileID: 1525424584}
   - component: {fileID: 1525424589}
   - component: {fileID: 1525424586}
+  - component: {fileID: 1525424590}
   m_Layer: 0
   m_Name: Marthow
   m_TagString: Player
@@ -4030,11 +4036,12 @@ MonoBehaviour:
     m_Bits: 0
   velocity: 3
   salto: 0
-  force: 0
+  forceChapado: 0
+  posicaoInicial: {x: 0, y: 0, z: 0}
   isPaused: 0
   isInFloor: 0
-  object1: {fileID: 0}
-  object2: {fileID: 0}
+  pulo: {fileID: 8300000, guid: fd1877edfa2a03445851415f5b4a9a35, type: 3}
+  morrer: {fileID: 8300000, guid: d5ddd38786156b146b3c679b26bd5698, type: 3}
 --- !u!212 &1525424587
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4119,6 +4126,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &1525424590
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525424583}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1535204631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4912,6 +5015,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: travaDrogas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418105104332834177, guid: 0ecea663bc9c78a47bc23e7f005ac01b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ecea663bc9c78a47bc23e7f005ac01b, type: 3}

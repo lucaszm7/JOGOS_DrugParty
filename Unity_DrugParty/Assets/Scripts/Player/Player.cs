@@ -26,6 +26,10 @@ public class Player : MonoBehaviour{
     Rigidbody2D physics;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    AudioSource audioSource;
+
+    public AudioClip pulo;
+    public AudioClip morrer;
 
 
     // Pega os componentes necessários quando o Player eh criado
@@ -33,6 +37,7 @@ public class Player : MonoBehaviour{
         this.physics = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         this.velocity = 3;
         this.isInFloor = true;
         this.salto = 1.3f;
@@ -72,7 +77,8 @@ public class Player : MonoBehaviour{
     }
 
     public void PlayerDead(){
-        
+        audioSource.clip = morrer;
+        audioSource.Play();
         transform.position = posicaoInicial;
         //Player.drogado = false;
 
@@ -100,6 +106,8 @@ public class Player : MonoBehaviour{
         // Salto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)){
             if (this.isInFloor){
+                audioSource.clip = pulo;
+                audioSource.Play();
                 this.physics.AddForce(Vector3.up * velocity * salto, ForceMode2D.Impulse);
                 if (Player.chapado){
                     isInFloor = false;
